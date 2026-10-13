@@ -20,7 +20,8 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   compiling the decomp's own functions natively. Negative control (lag 31→30) fails 134
   checks. SDL2 app skeleton with fixed 60 Hz tick, fault handler (gtetrinet-ng pattern,
   ntfy topic drmario64-vs-faults-9c41d7a2e05b4f18), fault-reports workflow, repo secret
-  JARVIS_REPORT_URL set. CI: Linux ASan/UBSan + native Windows MSYS2.
+  JARVIS_REPORT_URL set. CI: Linux ASan/UBSan + native Windows MSYS2; run
+  38452705306 green on 8a59550 (both jobs).
 - Local ASan does not work in this container (vm.mmap_rnd_bits=32, setarch denied):
   use UBSan locally, ASan only in CI.
 
