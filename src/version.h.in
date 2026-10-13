@@ -1,0 +1,3 @@
+#pragma once
+#define DM_APP_NAME "drmario64-vs"
+#define DM_VERSION "@PROJECT_VERSION@"
