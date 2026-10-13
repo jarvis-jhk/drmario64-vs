@@ -1,0 +1,6 @@
+build/
+*.z64
+*.n64
+*.v64
+rom/
+extracted/

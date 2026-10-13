@@ -1,2 +1,5 @@
-# drmario64-vs
-Dr. Mario 64 VS: JARVIS's own frame-exact reimplementation of Dr. Mario 64's 1v1 local versus mode (no story/music/backgrounds), crisp vector/4K graphics, original sounds, Linux/Windows/Steam Deck releases with auto-update
+# Dr. Mario 64 VS
+
+A faithful, frame-exact remake of the two-player local versus mode of Dr. Mario 64,
+with sharp vector graphics for modern screens (up to 4K), for Linux, Windows and the
+Steam Deck. Work in progress; not affiliated with Nintendo. No game data is included.
