@@ -25,6 +25,23 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Local ASan does not work in this container (vm.mmap_rnd_bits=32, setarch denied):
   use UBSan locally, ASan only in CI.
 
+## 2026-10-16 — M0 closed: round-setup oracle + port
+
+- `tools/oracle/` (our harness, decomp code compiled in at build time, nothing from it
+  checked in): 280 golden rounds in `tests/fixtures/setup.txt`. `src/core/setup.c`
+  ports `dm_make_magazine`, `_dm_virus_init` (scan every 3rd attempt, restart after the
+  3rd failed scan), `make_flash_virus_pos` and the equal-level copy; all 280 match.
+- Original quirk kept: MakeFlash's `selected[0x60]` is indexed by cell index (≤127)
+  and overruns into `decideBuf[0]`; emulated with one shared array. Practically
+  unreachable (no effect in 3M random FLASH rounds), so the fixture cannot prove it.
+- Negative controls: restart threshold 2→3 (28 bottles differ), FLASH ymax clamp
+  14→15 (85 failures), magazine length 256→255 (969). Two guards in the colour checks
+  (`y > 3` in dm_check_color, `y >= 6` in dm_check_color_2) are unreachable because
+  the limit line is ≥ 3, so viruses are always at y ≥ 4.
+- Working rule (Jan, 2026-10-16): heavy builds/tests/sanitizer matrices/emulator runs go
+  to the 🔬 re lane on the laptop (push a branch, report API lane "re"); here only one
+  incremental build + a focused test, max two compiler jobs. GitHub CI unchanged.
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in
@@ -36,9 +53,9 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Win/draw jingles are music sequences in the original. Jan wants no music: skip them
   for v0.1; revisit if the round end feels empty.
 
-## Next (M0 remainder → M1)
+## Next (M1)
 
-1. Oracle harness (stubs, movie input, per-tick hash dump) outside the repo; first
-   golden traces for virus generation and magazine (no input needed).
-2. Port virus generation + magazine into dmcore, golden-test against the oracle.
-3. Emulator route for countdown length / latency.
+1. Per-tick oracle: link `dm_game_main.c` natively (needs `build/us/.../*.msg.inc` on
+   the include path and ~200 stubs), movie input in place of `joyProcCore`, hash dump.
+2. Port capsule movement/DAS/rotation/gravity/clears/garbage into dmcore against it.
+3. Emulator route for countdown length / latency (heavy: re lane).

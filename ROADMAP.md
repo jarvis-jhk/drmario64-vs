@@ -1,9 +1,12 @@
 # Roadmap
 
 - **M0 Reference & spec** — decomp builds matching (done); docs/SPEC.md (done, UNVERIFIED points
-  listed in NOTES); RNG ported with golden test (done); reference-trace oracle per
-  docs/TRACES.md (open).
-- **M1 Engine core** — headless deterministic VS engine in C; golden-trace tests
+  listed in NOTES); RNG ported with golden test (done); round-setup oracle from the decomp's own
+  code + dmcore port of magazine, virus layouts and FLASH targets matching 280 golden
+  rounds (done 2026-10-16). **M0 done.**
+- **M1 Engine core** — per-tick trace oracle (input movies through the decomp's
+  `dm_game_main_cnt`/`key_control_main`, docs/TRACES.md) and the headless
+  deterministic VS engine in C; golden-trace tests
   match the original frame-for-frame (pill RNG, viruses, gravity, DAS, rotation,
   clears, garbage, win/lose).
 - **M2 Playable 1v1** — SDL2 frontend, two controllers + keyboard, VS menu

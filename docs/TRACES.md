@@ -55,5 +55,18 @@ reports the first diverging tick with a readable dump of both boards.
 
 ## Status
 
-M0: plan only. Built and verified the decomp; RNG oracle (calc.c functions compiled
-natively) produced `tests/fixtures/rng.txt`, which `test_core` checks.
+- RNG oracle (calc.c compiled natively) → `tests/fixtures/rng.txt`.
+- **Round-setup oracle** (`tools/oracle/`, M0 done 2026-10-16): `build.sh <decomp>`
+  compiles the decomp's own `dm_virus_init.c` and `calc.c` plus `dm_make_magazine` cut
+  verbatim from `dm_game_main.c`, natively on x86_64, and replays `dm_game_init`'s RNG
+  order (seed → magazine → P1 virus/flash → P2 virus/flash → equal-level copy). It prints
+  `tests/fixtures/setup.txt`: 280 rounds (NORMAL levels 0–20, FLASH and TIME ATTACK
+  game levels 0–2, equal and different levels, 12 crowded level-20 seeds that restart
+  the layout), each with the magazine hash, per-player colour counts + hash of bottle
+  and reveal order, the FLASH targets and the next `irandom()` after setup. `test_core`
+  checks `src/core/setup.c` against it and requires the scan and restart paths to stay
+  covered. Generate: `tools/oracle/build.sh <decomp> > tests/fixtures/setup.txt`.
+  ⚠️ ultralib's `s32`/`u32` are `long`; the script pins them to `int` with a shim
+  header so the 32-bit wraparound matches the N64.
+- The per-tick trace oracle (input movies, `dm_game_main_cnt`) is M1 work, built
+  alongside the engine it checks.

@@ -1,0 +1,280 @@
+seed 0 mode 0 vl 0 3 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 2 1 1 c137efad3c191355 flash - | p2 5 5 6 29c319347effe07f flash - | next 18737
+seed 0 mode 0 vl 11 11 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 16 16 16 8437d0a795576c39 flash - | p2 16 16 16 8437d0a795576c39 flash - | next 8636
+seed 0 mode 1 vl 6 6 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 10 10 10 fb96b0c6785387ef flash 1,15,0 6,9,1 4,7,2 | p2 10 10 10 fb96b0c6785387ef flash 1,15,0 6,9,1 4,7,2 | next 27895
+seed 0 mode 3 vl 6 6 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 10 10 10 fb96b0c6785387ef flash - | p2 10 10 10 fb96b0c6785387ef flash - | next 34265
+seed 1 mode 0 vl 1 10 gl 0 0 | mag 558887d6914c47af ea a0 5f bb | p1 3 2 3 9e4acecd1c9251b2 flash - | p2 15 14 15 27d3dddb14d8cf47 flash - | next 57131
+seed 1 mode 0 vl 16 16 gl 0 0 | mag 558887d6914c47af ea a0 5f bb | p1 23 22 23 4e144b6a9a887e9c flash - | p2 23 22 23 4e144b6a9a887e9c flash - | next 5954
+seed 1 mode 1 vl 9 6 gl 1 0 | mag 558887d6914c47af ea a0 5f bb | p1 13 13 14 c8743bedbf080631 flash 4,9,0 2,15,1 6,10,2 | p2 10 10 10 cbd209b883548793 flash 2,7,0 3,15,1 5,9,2 | next 21547
+seed 1 mode 3 vl 6 9 gl 0 1 | mag 558887d6914c47af ea a0 5f bb | p1 10 10 10 1b237c27cd9aeae5 flash - | p2 13 14 13 7b5003c97b41fce6 flash - | next 18178
+seed 2 mode 0 vl 2 17 gl 0 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 4 4 4 b2e93302d53b70c3 flash - | p2 24 24 24 1db8647975c9e86c flash - | next 18696
+seed 2 mode 0 vl 0 0 gl 0 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 1 1 2 9c147589423b7e59 flash - | p2 1 1 2 9c147589423b7e59 flash - | next 60896
+seed 2 mode 1 vl 12 6 gl 2 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 16 17 17 e30672c20eeb3d91 flash 3,15,0 4,11,1 2,12,2 | p2 10 10 10 3dc33ab8ccc6b139 flash 4,14,0 2,8,1 4,9,2 | next 51167
+seed 2 mode 3 vl 6 12 gl 0 2 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 10 10 10 79d44107fdbdeb13 flash - | p2 17 17 16 8fb809b4c61a18a1 flash - | next 58713
+seed 4660 mode 0 vl 3 3 gl 0 0 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 6 5 5 f4ccac5c25742c40 flash - | p2 6 5 5 f4ccac5c25742c40 flash - | next 35785
+seed 4660 mode 0 vl 5 5 gl 0 0 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 8 8 8 160d7062391c61d5 flash - | p2 8 8 8 160d7062391c61d5 flash - | next 61493
+seed 4660 mode 1 vl 6 9 gl 0 1 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 10 10 10 7ef1e038249ab794 flash 1,6,0 6,14,1 4,9,2 | p2 13 14 13 25971d674bac107a flash 5,6,0 1,13,1 2,11,2 | next 29205
+seed 4660 mode 3 vl 9 6 gl 1 0 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 14 13 13 5f9936761994d196 flash - | p2 10 10 10 c542d1749752ad6d flash - | next 22003
+seed 65535 mode 0 vl 4 10 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 7 6 7 9c19bda77c12687b flash - | p2 15 14 15 12f62510a004e594 flash - | next 62464
+seed 65535 mode 0 vl 10 10 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 15 14 15 10839d89d4aa1562 flash - | p2 15 14 15 10839d89d4aa1562 flash - | next 1834
+seed 65535 mode 1 vl 9 9 gl 1 1 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 14 13 13 7960690b82d2f659 flash 2,9,0 5,15,1 6,12,2 | p2 14 13 13 7960690b82d2f659 flash 2,9,0 5,15,1 6,12,2 | next 25110
+seed 65535 mode 3 vl 9 9 gl 1 1 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 14 13 13 7960690b82d2f659 flash - | p2 14 13 13 7960690b82d2f659 flash - | next 39860
+seed 65536 mode 0 vl 5 17 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 8 8 8 c269d22e52ca2dc0 flash - | p2 24 24 24 eb35233029627921 flash - | next 21866
+seed 65536 mode 0 vl 15 15 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 22 21 21 20498d7dac079c12 flash - | p2 22 21 21 20498d7dac079c12 flash - | next 22944
+seed 65536 mode 1 vl 12 9 gl 2 1 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 17 17 16 7d0c41c2a71dd115 flash 3,15,0 3,11,1 5,10,2 | p2 14 13 13 a32bf3e5d3eaa9fc flash 1,13,0 5,12,1 2,6,2 | next 40829
+seed 65536 mode 3 vl 9 12 gl 1 2 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 14 13 13 55485312a94ac9d8 flash - | p2 16 17 17 ba8fa71f1d77363b flash - | next 13577
+seed -1 mode 0 vl 6 3 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 10 9 9 a283d7bedef15ca9 flash - | p2 5 5 6 560b73ff8f3929af flash - | next 50833
+seed -1 mode 0 vl 20 20 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 28 28 28 287fd9377062f89f flash - | p2 28 28 28 287fd9377062f89f flash - | next 61597
+seed -1 mode 1 vl 6 12 gl 0 2 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 10 10 10 cec8cabf78354cb5 flash 4,8,0 4,6,1 2,14,2 | p2 17 17 16 e2c5b7eb081ee07c flash 3,12,0 2,13,1 4,10,2 | next 18937
+seed -1 mode 3 vl 12 6 gl 2 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 17 16 17 962925e32d04df49 flash - | p2 10 10 10 1b5ce5c3c517bf97 flash - | next 38287
+seed 2147483647 mode 0 vl 7 10 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 11 10 11 39ec3be6d2b4311f flash - | p2 15 15 14 d6cef476df573ca3 flash - | next 61995
+seed 2147483647 mode 0 vl 4 4 gl 0 0 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 7 6 7 9c19bda77c12687b flash - | p2 7 6 7 9c19bda77c12687b flash - | next 26549
+seed 2147483647 mode 1 vl 9 12 gl 1 2 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 14 13 13 7960690b82d2f659 flash 2,9,0 5,15,1 6,12,2 | p2 17 16 17 1f7c93a3d9022356 flash 6,11,0 6,12,1 4,15,2 | next 19635
+seed 2147483647 mode 3 vl 12 9 gl 2 1 | mag ddb5791b74bd44a7 fa 47 66 bb | p1 17 16 17 962925e32d04df49 flash - | p2 13 13 14 a18b9cd2193d108b flash - | next 52272
+seed -2147483648 mode 0 vl 8 17 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 12 12 12 a34b1c3dfe6f042c flash - | p2 24 24 24 184421998c5286eb flash - | next 13424
+seed -2147483648 mode 0 vl 9 9 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 14 13 13 55485312a94ac9d8 flash - | p2 14 13 13 55485312a94ac9d8 flash - | next 36783
+seed -2147483648 mode 1 vl 12 12 gl 2 2 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 17 17 16 7d0c41c2a71dd115 flash 3,15,0 3,11,1 5,10,2 | p2 17 17 16 7d0c41c2a71dd115 flash 3,15,0 3,11,1 5,10,2 | next 34512
+seed -2147483648 mode 3 vl 12 12 gl 2 2 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 17 17 16 7d0c41c2a71dd115 flash - | p2 17 17 16 7d0c41c2a71dd115 flash - | next 64363
+seed 12345678 mode 0 vl 9 3 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 13 13 14 dd5bd88242aeafb8 flash - | p2 5 5 6 3723deb939d7fa0e flash - | next 48038
+seed 12345678 mode 0 vl 14 14 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 20 20 20 1ea2cdf615c4093c flash - | p2 20 20 20 1ea2cdf615c4093c flash - | next 26084
+seed 12345678 mode 1 vl 6 6 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 10 10 10 0fc835b9d1581d51 flash 1,8,0 5,14,1 1,6,2 | p2 10 10 10 0fc835b9d1581d51 flash 1,8,0 5,14,1 1,6,2 | next 46042
+seed 12345678 mode 3 vl 6 6 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 10 10 10 0fc835b9d1581d51 flash - | p2 10 10 10 0fc835b9d1581d51 flash - | next 13136
+seed -493411140 mode 0 vl 10 10 gl 0 0 | mag 32b0095ccebc04e2 12 56 cf 45 | p1 15 15 14 bc5471e3d224a811 flash - | p2 15 15 14 bc5471e3d224a811 flash - | next 50343
+seed -493411140 mode 0 vl 19 19 gl 0 0 | mag 32b0095ccebc04e2 12 56 cf 45 | p1 27 27 26 50206ac0f041a137 flash - | p2 27 27 26 50206ac0f041a137 flash - | next 38596
+seed -493411140 mode 1 vl 9 6 gl 1 0 | mag 32b0095ccebc04e2 12 56 cf 45 | p1 13 14 13 7fdea378dbef9d9a flash 3,12,0 6,9,1 6,15,2 | p2 10 10 10 ba1c286f0d7b3a88 flash 2,9,0 6,8,1 4,13,2 | next 50641
+seed -493411140 mode 3 vl 6 9 gl 0 1 | mag 32b0095ccebc04e2 12 56 cf 45 | p1 10 10 10 96b19a187f6f2582 flash - | p2 13 14 13 b770394676d2b44a flash - | next 36654
+seed -1927628565 mode 0 vl 11 17 gl 0 0 | mag fd6b0f8c2c1a7e9a ab 22 53 91 | p1 16 16 16 21344e2d8807169f flash - | p2 24 24 24 7c2b3b2f4efaaa79 flash - | next 10130
+seed -1927628565 mode 0 vl 3 3 gl 0 0 | mag fd6b0f8c2c1a7e9a ab 22 53 91 | p1 6 5 5 073fa1bb806225b7 flash - | p2 6 5 5 073fa1bb806225b7 flash - | next 20018
+seed -1927628565 mode 1 vl 12 6 gl 2 0 | mag fd6b0f8c2c1a7e9a ab 22 53 91 | p1 17 17 16 0f79db3bb6ebe68e flash 1,12,0 6,15,1 2,11,2 | p2 10 10 10 06f2403b9e09fb95 flash 5,14,0 4,6,1 5,6,2 | next 52965
+seed -1927628565 mode 3 vl 6 12 gl 0 2 | mag fd6b0f8c2c1a7e9a ab 22 53 91 | p1 10 10 10 550475cdcbfdea6e flash - | p2 16 17 17 d42b9931f8f1f58a flash - | next 32861
+seed 459995470 mode 0 vl 12 3 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 18 17 17 3c2cddc21b557638 flash - | p2 5 6 5 d2a33695e4d08dba flash - | next 34759
+seed 459995470 mode 0 vl 8 8 gl 0 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 12 12 12 103e07bea520e0af flash - | p2 12 12 12 103e07bea520e0af flash - | next 27460
+seed 459995470 mode 1 vl 6 9 gl 0 1 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 10 10 10 2919af525a0c4777 flash 4,6,0 3,8,1 6,13,2 | p2 14 13 13 a352cffe259d24c2 flash 6,13,0 2,11,1 2,7,2 | next 26302
+seed 459995470 mode 3 vl 9 6 gl 1 0 | mag 9322d4cf3a6ba7bf 82 fc 59 09 | p1 14 13 13 59e8b87c8490928b flash - | p2 10 10 10 8669065a925850ff flash - | next 1666
+seed -1731153835 mode 0 vl 13 10 gl 0 0 | mag 0fe6487ec6345754 4a 19 24 47 | p1 19 18 19 438c1b5dad2b5cca flash - | p2 15 15 14 84e1b86f3be7e743 flash - | next 16201
+seed -1731153835 mode 0 vl 13 13 gl 0 0 | mag 0fe6487ec6345754 4a 19 24 47 | p1 19 18 19 438c1b5dad2b5cca flash - | p2 19 18 19 438c1b5dad2b5cca flash - | next 12035
+seed -1731153835 mode 1 vl 9 9 gl 1 1 | mag 0fe6487ec6345754 4a 19 24 47 | p1 14 13 13 348e70994b3c1e10 flash 3,9,0 6,13,1 1,12,2 | p2 14 13 13 348e70994b3c1e10 flash 3,9,0 6,13,1 1,12,2 | next 30594
+seed -1731153835 mode 3 vl 9 9 gl 1 1 | mag 0fe6487ec6345754 4a 19 24 47 | p1 14 13 13 348e70994b3c1e10 flash - | p2 14 13 13 348e70994b3c1e10 flash - | next 45022
+seed 1570162096 mode 0 vl 14 17 gl 0 0 | mag 7a9ccb6fec46259f 72 92 73 6d | p1 20 20 20 c69c336180e1d68f flash - | p2 24 24 24 80f64be3578d2eaf flash - | next 1539
+seed 1570162096 mode 0 vl 18 18 gl 0 0 | mag 7a9ccb6fec46259f 72 92 73 6d | p1 26 25 25 817bb1726689d440 flash - | p2 26 25 25 817bb1726689d440 flash - | next 51592
+seed 1570162096 mode 1 vl 12 9 gl 2 1 | mag 7a9ccb6fec46259f 72 92 73 6d | p1 17 17 16 d742e5d9ef99a08c flash 1,10,0 6,15,1 3,12,2 | p2 13 14 13 65c744b6840c3f97 flash 4,10,0 4,14,1 4,9,2 | next 21492
+seed 1570162096 mode 3 vl 9 12 gl 1 2 | mag 7a9ccb6fec46259f 72 92 73 6d | p1 14 13 13 33089fcf8fa890b8 flash - | p2 16 17 17 ad114ae4a661f06d flash - | next 24349
+seed 1577786703 mode 0 vl 15 3 gl 0 0 | mag 7c448f6d47bdecce 7a b7 76 5b | p1 21 21 22 a1508af166747b65 flash - | p2 5 5 6 48ab009619bacede flash - | next 14885
+seed 1577786703 mode 0 vl 2 2 gl 0 0 | mag 7c448f6d47bdecce 7a b7 76 5b | p1 4 4 4 d6f036553c8fe895 flash - | p2 4 4 4 d6f036553c8fe895 flash - | next 2806
+seed 1577786703 mode 1 vl 6 12 gl 0 2 | mag 7c448f6d47bdecce 7a b7 76 5b | p1 10 10 10 835f102a80511d3d flash 6,9,0 4,8,1 3,14,2 | p2 17 17 16 bf43a5781c9917e5 flash 2,11,0 4,14,1 1,12,2 | next 786
+seed 1577786703 mode 3 vl 12 6 gl 2 0 | mag 7c448f6d47bdecce 7a b7 76 5b | p1 17 16 17 54973caa714f46f5 flash - | p2 10 10 10 43ab1fc94bd41cac flash - | next 20008
+seed 1298393698 mode 0 vl 16 10 gl 0 0 | mag 16e3155226a84d46 e2 98 9d 71 | p1 23 23 22 766cbf88eda9a34d flash - | p2 14 15 15 00885fd6061c1c1b flash - | next 16472
+seed 1298393698 mode 0 vl 7 7 gl 0 0 | mag 16e3155226a84d46 e2 98 9d 71 | p1 11 11 10 5ca71b559cb951e8 flash - | p2 11 11 10 5ca71b559cb951e8 flash - | next 39012
+seed 1298393698 mode 1 vl 9 12 gl 1 2 | mag 16e3155226a84d46 e2 98 9d 71 | p1 13 14 13 f4be46d15c3bcd51 flash 2,12,0 6,6,1 6,14,2 | p2 17 17 16 78582d290ea8240d flash 1,10,0 4,11,1 3,13,2 | next 53558
+seed 1298393698 mode 3 vl 12 9 gl 2 1 | mag 16e3155226a84d46 e2 98 9d 71 | p1 17 17 16 6a5754fdc0588f34 flash - | p2 14 13 13 14970d0f0a1d0aad flash - | next 30902
+seed -579410343 mode 0 vl 17 17 gl 0 0 | mag c1053d6f51a60a67 2a 05 8f 63 | p1 24 24 24 1f59d064dbfc1b0a flash - | p2 24 24 24 1f59d064dbfc1b0a flash - | next 48918
+seed -579410343 mode 0 vl 12 12 gl 0 0 | mag c1053d6f51a60a67 2a 05 8f 63 | p1 17 18 17 e676949942c7171d flash - | p2 17 18 17 e676949942c7171d flash - | next 25471
+seed -579410343 mode 1 vl 12 12 gl 2 2 | mag c1053d6f51a60a67 2a 05 8f 63 | p1 17 17 16 2bbad8b6374d5e0e flash 4,11,0 3,12,1 6,13,2 | p2 17 17 16 2bbad8b6374d5e0e flash 4,11,0 3,12,1 6,13,2 | next 26312
+seed -579410343 mode 3 vl 12 12 gl 2 2 | mag c1053d6f51a60a67 2a 05 8f 63 | p1 17 17 16 2bbad8b6374d5e0e flash - | p2 17 17 16 2bbad8b6374d5e0e flash - | next 10710
+seed 1508973540 mode 0 vl 18 3 gl 0 0 | mag 0f124d4c0a2ebfe4 d2 8e 57 15 | p1 25 25 26 e298e03a9edb7d55 flash - | p2 5 5 6 e4278227c7e11843 flash - | next 4373
+seed 1508973540 mode 0 vl 17 17 gl 0 0 | mag 0f124d4c0a2ebfe4 d2 8e 57 15 | p1 24 24 24 20cb234328ed47cd flash - | p2 24 24 24 20cb234328ed47cd flash - | next 47883
+seed 1508973540 mode 1 vl 6 6 gl 0 0 | mag 0f124d4c0a2ebfe4 d2 8e 57 15 | p1 10 10 10 ce53c25129a49e3f flash 4,7,0 2,13,1 4,8,2 | p2 10 10 10 ce53c25129a49e3f flash 4,7,0 2,13,1 4,8,2 | next 60069
+seed 1508973540 mode 3 vl 6 6 gl 0 0 | mag 0f124d4c0a2ebfe4 d2 8e 57 15 | p1 10 10 10 ce53c25129a49e3f flash - | p2 10 10 10 ce53c25129a49e3f flash - | next 63147
+seed -1743899149 mode 0 vl 19 10 gl 0 0 | mag f113b865d0a33327 5a 83 0a e3 | p1 26 27 27 2fa07a72c7c2bdc0 flash - | p2 15 14 15 e841e0085a4638a4 flash - | next 56310
+seed -1743899149 mode 0 vl 1 1 gl 0 0 | mag f113b865d0a33327 5a 83 0a e3 | p1 2 3 3 2cb161ea489f11d4 flash - | p2 2 3 3 2cb161ea489f11d4 flash - | next 3662
+seed -1743899149 mode 1 vl 9 6 gl 1 0 | mag f113b865d0a33327 5a 83 0a e3 | p1 13 13 14 7acfbb3b3b700124 flash 2,14,0 6,11,1 3,9,2 | p2 10 10 10 f213e81f7abfa61d flash 2,6,0 1,13,1 3,7,2 | next 286
+seed -1743899149 mode 3 vl 6 9 gl 0 1 | mag f113b865d0a33327 5a 83 0a e3 | p1 10 10 10 ec5710cd765f16eb flash - | p2 14 13 13 3ec725b91eea1bf2 flash - | next 65106
+seed -480148810 mode 0 vl 20 17 gl 0 0 | mag 5f6d41aa1a7e00b0 42 f4 21 59 | p1 28 28 28 b84cb63007a5a0aa flash - | p2 24 24 24 9356fe9635621a60 flash - | next 24705
+seed -480148810 mode 0 vl 6 6 gl 0 0 | mag 5f6d41aa1a7e00b0 42 f4 21 59 | p1 10 9 9 5b6661bd56b706c8 flash - | p2 10 9 9 5b6661bd56b706c8 flash - | next 4964
+seed -480148810 mode 1 vl 12 6 gl 2 0 | mag 5f6d41aa1a7e00b0 42 f4 21 59 | p1 17 16 17 aad1b799f2b9688c flash 6,11,0 2,15,1 2,12,2 | p2 10 10 10 0874b2c29acfec84 flash 1,9,0 4,15,1 6,9,2 | next 10237
+seed -480148810 mode 3 vl 6 12 gl 0 2 | mag 5f6d41aa1a7e00b0 42 f4 21 59 | p1 10 10 10 bfc2b00328622cee flash - | p2 17 16 17 487cbfebe85ec025 flash - | next 53027
+seed 1715280541 mode 0 vl 0 3 gl 0 0 | mag 11e4281dfd0805a9 0a b1 4c 57 | p1 2 1 1 2e3d82dda831cce1 flash - | p2 5 5 6 8e3a07128b4e1f69 flash - | next 24807
+seed 1715280541 mode 0 vl 11 11 gl 0 0 | mag 11e4281dfd0805a9 0a b1 4c 57 | p1 16 16 16 b74709cd410342dc flash - | p2 16 16 16 b74709cd410342dc flash - | next 47575
+seed 1715280541 mode 1 vl 6 9 gl 0 1 | mag 11e4281dfd0805a9 0a b1 4c 57 | p1 10 10 10 1c99fa1d167ae430 flash 1,6,0 3,15,1 5,6,2 | p2 13 13 14 a15f9fc1b762042c flash 3,7,0 3,14,1 1,11,2 | next 43060
+seed 1715280541 mode 3 vl 9 6 gl 1 0 | mag 11e4281dfd0805a9 0a b1 4c 57 | p1 14 13 13 1e34d34c85930122 flash - | p2 10 10 10 06928ec5fba96187 flash - | next 48690
+seed 1601755992 mode 0 vl 1 10 gl 0 0 | mag 72fb912eff6631c0 32 4a 7b 3d | p1 3 2 3 cae85e3699d5b085 flash - | p2 15 15 14 3ab9c7786c35ecf0 flash - | next 22824
+seed 1601755992 mode 0 vl 16 16 gl 0 0 | mag 72fb912eff6631c0 32 4a 7b 3d | p1 23 22 23 db481c98b94b3de9 flash - | p2 23 22 23 db481c98b94b3de9 flash - | next 24398
+seed 1601755992 mode 1 vl 9 9 gl 1 1 | mag 72fb912eff6631c0 32 4a 7b 3d | p1 14 13 13 5105480adcef3d44 flash 1,14,0 1,12,1 5,9,2 | p2 14 13 13 5105480adcef3d44 flash 1,14,0 1,12,1 5,9,2 | next 24078
+seed 1601755992 mode 3 vl 9 9 gl 1 1 | mag 72fb912eff6631c0 32 4a 7b 3d | p1 14 13 13 5105480adcef3d44 flash - | p2 14 13 13 5105480adcef3d44 flash - | next 57739
+seed -1467013417 mode 0 vl 2 17 gl 0 0 | mag f45b174ef5066b2c 0f de eb b0 | p1 4 4 4 3f8fcaac56ddbc7e flash - | p2 24 24 24 ebb71570b5dc72bc flash - | next 59500
+seed -1467013417 mode 0 vl 0 0 gl 0 0 | mag f45b174ef5066b2c 0f de eb b0 | p1 2 1 1 1ca889d392681e9d flash - | p2 2 1 1 1ca889d392681e9d flash - | next 25420
+seed -1467013417 mode 1 vl 12 9 gl 2 1 | mag f45b174ef5066b2c 0f de eb b0 | p1 17 17 16 4fc309473ecfa077 flash 1,10,0 5,14,1 5,12,2 | p2 13 13 14 f816f59a9a03f08a flash 3,7,0 3,13,1 6,11,2 | next 63034
+seed -1467013417 mode 3 vl 9 12 gl 1 2 | mag f45b174ef5066b2c 0f de eb b0 | p1 14 13 13 9d4a75ce6ef95fdf flash - | p2 17 16 17 991a63b7bf6743e4 flash - | next 17938
+seed -1607690678 mode 0 vl 3 3 gl 0 0 | mag cf53fce72b4a0d37 a2 10 e5 c1 | p1 5 5 6 19e91a22bac3c56e flash - | p2 5 5 6 19e91a22bac3c56e flash - | next 41499
+seed -1607690678 mode 0 vl 5 5 gl 0 0 | mag cf53fce72b4a0d37 a2 10 e5 c1 | p1 8 8 8 b117d533f6cceb9d flash - | p2 8 8 8 b117d533f6cceb9d flash - | next 22983
+seed -1607690678 mode 1 vl 6 12 gl 0 2 | mag cf53fce72b4a0d37 a2 10 e5 c1 | p1 10 10 10 e7c13c51090dfde6 flash 2,6,0 3,15,1 2,8,2 | p2 17 17 16 65fc3e6fb2a52c40 flash 3,11,0 3,14,1 4,11,2 | next 40755
+seed -1607690678 mode 3 vl 12 6 gl 2 0 | mag cf53fce72b4a0d37 a2 10 e5 c1 | p1 16 17 17 176c18c28bad2fdc flash - | p2 10 10 10 3871098aa80edc97 flash - | next 50833
+seed -808578783 mode 0 vl 4 10 gl 0 0 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 7 6 7 892ec0581fbf4942 flash - | p2 15 14 15 31a6398010409a89 flash - | next 25671
+seed -808578783 mode 0 vl 10 10 gl 0 0 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 15 14 15 c5491329cbf06673 flash - | p2 15 14 15 c5491329cbf06673 flash - | next 55460
+seed -808578783 mode 1 vl 9 12 gl 1 2 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 13 13 14 175591127305308d flash 5,14,0 1,11,1 3,8,2 | p2 17 17 16 dc402b7a4452a0ae flash 1,6,0 5,12,1 3,15,2 | next 20186
+seed -808578783 mode 3 vl 12 9 gl 2 1 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 17 16 17 dd988d5efd6084e6 flash - | p2 14 13 13 1490c9e8cf972083 flash - | next 25473
+seed -1863190516 mode 0 vl 5 17 gl 0 0 | mag 6b552e0115f0571a 92 c6 df e5 | p1 8 8 8 623e02cd6e16f61b flash - | p2 24 24 24 04f16133c4910585 flash - | next 39215
+seed -1863190516 mode 0 vl 15 15 gl 0 0 | mag 6b552e0115f0571a 92 c6 df e5 | p1 21 21 22 442ad5fb0f12c3d0 flash - | p2 21 21 22 442ad5fb0f12c3d0 flash - | next 1919
+seed -1863190516 mode 1 vl 12 12 gl 2 2 | mag 6b552e0115f0571a 92 c6 df e5 | p1 17 16 17 7befe34d0302861b flash 5,14,0 4,10,1 5,11,2 | p2 17 16 17 7befe34d0302861b flash 5,14,0 4,10,1 5,11,2 | next 12283
+seed -1863190516 mode 3 vl 12 12 gl 2 2 | mag 6b552e0115f0571a 92 c6 df e5 | p1 17 16 17 7befe34d0302861b flash - | p2 17 16 17 7befe34d0302861b flash - | next 37375
+seed 985224187 mode 0 vl 6 3 gl 0 0 | mag d08e753bcd10f021 1a 5b f2 73 | p1 9 9 10 43f2ea03b8458b5c flash - | p2 5 6 5 dfd7c56fdb60dfbc flash - | next 25211
+seed 985224187 mode 0 vl 20 20 gl 0 0 | mag d08e753bcd10f021 1a 5b f2 73 | p1 28 28 28 b839c310cb5d5f7a flash - | p2 28 28 28 b839c310cb5d5f7a flash - | next 50421
+seed 985224187 mode 1 vl 6 6 gl 0 0 | mag d08e753bcd10f021 1a 5b f2 73 | p1 10 10 10 eeb3d0d794e70cfa flash 5,15,0 3,6,1 4,9,2 | p2 10 10 10 eeb3d0d794e70cfa flash 5,15,0 3,6,1 4,9,2 | next 14266
+seed 985224187 mode 3 vl 6 6 gl 0 0 | mag d08e753bcd10f021 1a 5b f2 73 | p1 10 10 10 eeb3d0d794e70cfa flash - | p2 10 10 10 eeb3d0d794e70cfa flash - | next 48382
+seed 1121007902 mode 0 vl 7 10 gl 0 0 | mag 057601dde66daf0d 02 ec a9 fe | p1 10 11 11 2c21b6a9029863b9 flash - | p2 15 15 14 cc52090eeb02286e flash - | next 42605
+seed 1121007902 mode 0 vl 4 4 gl 0 0 | mag 057601dde66daf0d 02 ec a9 fe | p1 6 7 7 addd4302db8bce7b flash - | p2 6 7 7 addd4302db8bce7b flash - | next 19925
+seed 1121007902 mode 1 vl 9 6 gl 1 0 | mag 057601dde66daf0d 02 ec a9 fe | p1 13 13 14 9382633fcdf3cc2b flash 5,12,0 6,8,1 4,15,2 | p2 10 10 10 976f9a9db8c08144 flash 4,8,0 1,15,1 5,6,2 | next 42882
+seed 1121007902 mode 3 vl 6 9 gl 0 1 | mag 057601dde66daf0d 02 ec a9 fe | p1 10 10 10 5c12965193201913 flash - | p2 13 13 14 ceef47d6c1a46d5c flash - | next 45187
+seed -1849766427 mode 0 vl 8 17 gl 0 0 | mag b72f068b5bf856b5 ca 49 74 67 | p1 12 12 12 9646c55abd3e677f flash - | p2 24 24 24 573765d560daf408 flash - | next 59667
+seed -1849766427 mode 0 vl 9 9 gl 0 0 | mag b72f068b5bf856b5 ca 49 74 67 | p1 13 14 13 80ad26d72f9c5ae3 flash - | p2 13 14 13 80ad26d72f9c5ae3 flash - | next 49563
+seed -1849766427 mode 1 vl 12 6 gl 2 0 | mag b72f068b5bf856b5 ca 49 74 67 | p1 17 17 16 da3ac7289f747830 flash 4,12,0 5,14,1 4,10,2 | p2 10 10 10 6da3f443c2f2bf8f flash 2,9,0 2,13,1 1,7,2 | next 16843
+seed -1849766427 mode 3 vl 6 12 gl 0 2 | mag b72f068b5bf856b5 ca 49 74 67 | p1 10 10 10 4fffb76a4ce018ab flash - | p2 16 17 17 2cd7ca3e67f2adb2 flash - | next 8018
+seed -997874176 mode 0 vl 9 3 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 13 13 14 8d18aa37376978d9 flash - | p2 5 6 5 a3bdcc8bca4429ec flash - | next 12249
+seed -997874176 mode 0 vl 14 14 gl 0 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 20 20 20 a66f7934f0d2575e flash - | p2 20 20 20 a66f7934f0d2575e flash - | next 21359
+seed -997874176 mode 1 vl 6 9 gl 0 1 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 10 10 10 5a32a40f1c21ebac flash 3,9,0 3,7,1 1,15,2 | p2 13 13 14 824565afe8e37623 flash 1,12,0 3,8,1 5,13,2 | next 44658
+seed -997874176 mode 3 vl 9 6 gl 1 0 | mag 680fd4ab7acbe7fa f2 83 0d dc | p1 13 13 14 8d18aa37376978d9 flash - | p2 10 10 10 fe49469fd8616801 flash - | next 27267
+seed -1386454689 mode 0 vl 10 10 gl 0 0 | mag 41f42dd1ab837cba 46 7b 9d 08 | p1 15 14 15 1ff39848114e863c flash - | p2 15 14 15 1ff39848114e863c flash - | next 26422
+seed -1386454689 mode 0 vl 19 19 gl 0 0 | mag 41f42dd1ab837cba 46 7b 9d 08 | p1 27 26 27 2f6be6b5450862c0 flash - | p2 27 26 27 2f6be6b5450862c0 flash - | next 62648
+seed -1386454689 mode 1 vl 9 9 gl 1 1 | mag 41f42dd1ab837cba 46 7b 9d 08 | p1 14 13 13 a72052c41e1af39f flash 6,9,0 5,14,1 4,10,2 | p2 14 13 13 a72052c41e1af39f flash 6,9,0 5,14,1 4,10,2 | next 28543
+seed -1386454689 mode 3 vl 9 9 gl 1 1 | mag 41f42dd1ab837cba 46 7b 9d 08 | p1 14 13 13 a72052c41e1af39f flash - | p2 14 13 13 a72052c41e1af39f flash - | next 41385
+seed 1530052402 mode 0 vl 11 17 gl 0 0 | mag 484633f645a76c31 62 88 2d 11 | p1 16 16 16 772c36736b32f965 flash - | p2 24 24 24 788e73c1b8569fce flash - | next 64557
+seed 1530052402 mode 0 vl 3 3 gl 0 0 | mag 484633f645a76c31 62 88 2d 11 | p1 5 5 6 a24d8083838deea4 flash - | p2 5 5 6 a24d8083838deea4 flash - | next 38659
+seed 1530052402 mode 1 vl 12 9 gl 2 1 | mag 484633f645a76c31 62 88 2d 11 | p1 16 17 17 a4729529cc65bbf1 flash 2,12,0 3,14,1 5,11,2 | p2 14 13 13 a032218313d1e0b7 flash 3,13,0 2,10,1 3,9,2 | next 4862
+seed 1530052402 mode 3 vl 9 12 gl 1 2 | mag 484633f645a76c31 62 88 2d 11 | p1 13 13 14 528fb3976f43ec9a flash - | p2 16 17 17 689925a24be6fe27 flash - | next 45766
+seed -1038969623 mode 0 vl 12 3 gl 0 0 | mag e81947558b7b1667 aa 35 e8 af | p1 18 17 17 68404fa20cbfbfb2 flash - | p2 6 5 5 21f46ac3d19147f5 flash - | next 13490
+seed -1038969623 mode 0 vl 8 8 gl 0 0 | mag e81947558b7b1667 aa 35 e8 af | p1 12 12 12 6b1edd9f1ffe42ad flash - | p2 12 12 12 6b1edd9f1ffe42ad flash - | next 51435
+seed -1038969623 mode 1 vl 6 12 gl 0 2 | mag e81947558b7b1667 aa 35 e8 af | p1 10 10 10 7051f1f974ecd96b flash 6,13,0 6,8,1 6,9,2 | p2 17 16 17 10efda9c77b3aa27 flash 3,12,0 3,10,1 6,13,2 | next 18120
+seed -1038969623 mode 3 vl 12 6 gl 2 0 | mag e81947558b7b1667 aa 35 e8 af | p1 17 16 17 c85a2a44e075db13 flash - | p2 10 10 10 6fbf9aa2a8838524 flash - | next 17255
+seed 158751028 mode 0 vl 13 10 gl 0 0 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 19 19 18 8d90cf7c4d2441a4 flash - | p2 15 15 14 82203f38925d1d0c flash - | next 46125
+seed 158751028 mode 0 vl 13 13 gl 0 0 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 19 19 18 8d90cf7c4d2441a4 flash - | p2 19 19 18 8d90cf7c4d2441a4 flash - | next 12346
+seed 158751028 mode 1 vl 9 12 gl 1 2 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 14 13 13 3e41eb0b5dd62f39 flash 5,15,0 5,11,1 3,7,2 | p2 17 17 16 bfba3913d1cbe9b3 flash 2,13,0 3,12,1 5,10,2 | next 58695
+seed 158751028 mode 3 vl 12 9 gl 2 1 | mag 095e6621d8030ffd 52 fe 67 b5 | p1 17 17 16 bcdd10eb922a32b8 flash - | p2 13 14 13 f06438fc3495b4f1 flash - | next 55585
+seed -1794100477 mode 0 vl 14 17 gl 0 0 | mag 53f9093c5423448d 33 da 03 79 | p1 20 20 20 b8638b04f13cc0a0 flash - | p2 24 24 24 7c28714931abfdac flash - | next 64302
+seed -1794100477 mode 0 vl 18 18 gl 0 0 | mag 53f9093c5423448d 33 da 03 79 | p1 25 25 26 e41206743029652c flash - | p2 25 25 26 e41206743029652c flash - | next 19561
+seed -1794100477 mode 1 vl 12 12 gl 2 2 | mag 53f9093c5423448d 33 da 03 79 | p1 16 17 17 02d5ed37f1fdf17a flash 6,11,0 5,14,1 5,12,2 | p2 16 17 17 02d5ed37f1fdf17a flash 6,11,0 5,14,1 5,12,2 | next 59650
+seed -1794100477 mode 3 vl 12 12 gl 2 2 | mag 53f9093c5423448d 33 da 03 79 | p1 16 17 17 02d5ed37f1fdf17a flash - | p2 16 17 17 02d5ed37f1fdf17a flash - | next 10528
+seed 1038072966 mode 0 vl 15 3 gl 0 0 | mag 2a4fd869c5301c4b c2 e4 f9 a5 | p1 21 21 22 fdd20ab93b773e89 flash - | p2 5 6 5 f81fe855f3c4e17c flash - | next 2719
+seed 1038072966 mode 0 vl 2 2 gl 0 0 | mag 2a4fd869c5301c4b c2 e4 f9 a5 | p1 4 4 4 a9aac4c72c35abc7 flash - | p2 4 4 4 a9aac4c72c35abc7 flash - | next 62797
+seed 1038072966 mode 1 vl 6 6 gl 0 0 | mag 2a4fd869c5301c4b c2 e4 f9 a5 | p1 10 10 10 e8fbde503c475d77 flash 2,6,0 5,6,1 2,14,2 | p2 10 10 10 e8fbde503c475d77 flash 2,6,0 5,6,1 2,14,2 | next 48604
+seed 1038072966 mode 3 vl 6 6 gl 0 0 | mag 2a4fd869c5301c4b c2 e4 f9 a5 | p1 10 10 10 e8fbde503c475d77 flash - | p2 10 10 10 e8fbde503c475d77 flash - | next 33817
+seed -285283795 mode 0 vl 16 10 gl 0 0 | mag 3f5b799adc4303b2 8a 9c 77 0f | p1 23 23 22 68d654af07e604c7 flash - | p2 15 14 15 4d78c2c46ef65554 flash - | next 8413
+seed -285283795 mode 0 vl 7 7 gl 0 0 | mag 3f5b799adc4303b2 8a 9c 77 0f | p1 11 11 10 7c2d3a3ace93e8a1 flash - | p2 11 11 10 7c2d3a3ace93e8a1 flash - | next 54341
+seed -285283795 mode 1 vl 9 6 gl 1 0 | mag 3f5b799adc4303b2 8a 9c 77 0f | p1 13 14 13 7f2a336f66751799 flash 4,6,0 2,11,1 4,15,2 | p2 10 10 10 460122cc4f80d4b0 flash 2,13,0 6,9,1 5,7,2 | next 54757
+seed -285283795 mode 3 vl 6 9 gl 0 1 | mag 3f5b799adc4303b2 8a 9c 77 0f | p1 10 10 10 8d42bd4207582e89 flash - | p2 14 13 13 97401200dad7b91f flash - | next 9267
+seed -820787800 mode 0 vl 17 17 gl 0 0 | mag 8056d9424990497c b2 ba 8b dd | p1 24 24 24 b3c3afb231213c7f flash - | p2 24 24 24 b3c3afb231213c7f flash - | next 28197
+seed -820787800 mode 0 vl 12 12 gl 0 0 | mag 8056d9424990497c b2 ba 8b dd | p1 17 17 18 a91e363fd99151db flash - | p2 17 17 18 a91e363fd99151db flash - | next 25146
+seed -820787800 mode 1 vl 12 6 gl 2 0 | mag 8056d9424990497c b2 ba 8b dd | p1 17 16 17 1cc8481f7c646767 flash 5,11,0 4,11,1 4,13,2 | p2 10 10 10 1256117ca46029c2 flash 1,9,0 2,13,1 5,9,2 | next 47485
+seed -820787800 mode 3 vl 6 12 gl 0 2 | mag 8056d9424990497c b2 ba 8b dd | p1 10 10 10 4a4e472a205d3e0a flash - | p2 17 16 17 f2983bfbc5a72a3d flash - | next 47402
+seed -291967769 mode 0 vl 18 3 gl 0 0 | mag 31a5a57c155b9be8 ba bf ae 0b | p1 25 25 26 2d3a4a7c124c00f9 flash - | p2 5 6 5 c73571dd2f9103b5 flash - | next 8434
+seed -291967769 mode 0 vl 17 17 gl 0 0 | mag 31a5a57c155b9be8 ba bf ae 0b | p1 24 24 24 b524bfbcfa97f8bf flash - | p2 24 24 24 b524bfbcfa97f8bf flash - | next 54820
+seed -291967769 mode 1 vl 6 9 gl 0 1 | mag 31a5a57c155b9be8 ba bf ae 0b | p1 10 10 10 5a5f6e7be476323e flash 1,6,0 6,7,1 6,15,2 | p2 13 14 13 ff9d3a5a1ac13207 flash 6,12,0 4,6,1 5,13,2 | next 10749
+seed -291967769 mode 3 vl 9 6 gl 1 0 | mag 31a5a57c155b9be8 ba bf ae 0b | p1 13 13 14 65eb139659c5de9d flash - | p2 10 10 10 1a027ca79a755f0f flash - | next 38796
+seed 1797653786 mode 0 vl 19 10 gl 0 0 | mag 27569676b5cc4354 22 00 75 61 | p1 26 27 27 46733a7b33585a46 flash - | p2 15 15 14 2e36d688a1531dd9 flash - | next 15689
+seed 1797653786 mode 0 vl 1 1 gl 0 0 | mag 27569676b5cc4354 22 00 75 61 | p1 2 3 3 99997cf47c9ce6d6 flash - | p2 2 3 3 99997cf47c9ce6d6 flash - | next 58628
+seed 1797653786 mode 1 vl 9 9 gl 1 1 | mag 27569676b5cc4354 22 00 75 61 | p1 13 13 14 f537789e17d86095 flash 2,6,0 5,14,1 3,10,2 | p2 13 13 14 f537789e17d86095 flash 2,6,0 5,14,1 3,10,2 | next 26976
+seed 1797653786 mode 3 vl 9 9 gl 1 1 | mag 27569676b5cc4354 22 00 75 61 | p1 13 13 14 f537789e17d86095 flash - | p2 13 13 14 f537789e17d86095 flash - | next 46263
+seed 1391432113 mode 0 vl 20 17 gl 0 0 | mag 730b91e2e0f1c320 6a 4d 90 bf | p1 28 28 28 2ac83dc1f2550d75 flash - | p2 24 24 24 fc973d88fdafd023 flash - | next 45856
+seed 1391432113 mode 0 vl 6 6 gl 0 0 | mag 730b91e2e0f1c320 6a 4d 90 bf | p1 9 9 10 24ae7c4b4397eda4 flash - | p2 9 9 10 24ae7c4b4397eda4 flash - | next 4411
+seed 1391432113 mode 1 vl 12 9 gl 2 1 | mag 730b91e2e0f1c320 6a 4d 90 bf | p1 16 17 17 56101b56780de41e flash 4,12,0 6,15,1 5,12,2 | p2 13 14 13 63784b3e45d179a9 flash 1,6,0 1,14,1 3,12,2 | next 46725
+seed 1391432113 mode 3 vl 9 12 gl 1 2 | mag 730b91e2e0f1c320 6a 4d 90 bf | p1 13 13 14 072082e80b31aa96 flash - | p2 16 17 17 a4b4612a2cd7e87d flash - | next 49382
+seed 552525660 mode 0 vl 0 3 gl 0 0 | mag 3085b0cf6ab04e2e 12 36 ef 85 | p1 2 1 1 95b912f4f4536f66 flash - | p2 5 5 6 6d6a7947d100e869 flash - | next 12420
+seed 552525660 mode 0 vl 11 11 gl 0 0 | mag 3085b0cf6ab04e2e 12 36 ef 85 | p1 16 16 16 409083a2112fa6c1 flash - | p2 16 16 16 409083a2112fa6c1 flash - | next 58539
+seed 552525660 mode 1 vl 6 12 gl 0 2 | mag 3085b0cf6ab04e2e 12 36 ef 85 | p1 10 10 10 92fb82c8a94021f3 flash 5,9,0 2,9,1 6,13,2 | p2 17 16 17 45ad1ea2c09d94e3 flash 5,10,0 3,14,1 2,12,2 | next 19392
+seed 552525660 mode 3 vl 12 6 gl 2 0 | mag 3085b0cf6ab04e2e 12 36 ef 85 | p1 17 17 16 d256d76a8f626dbe flash - | p2 10 10 10 fdb8b6ad46eb2ec3 flash - | next 61090
+seed -443878645 mode 0 vl 1 10 gl 0 0 | mag 031b62e5192041d4 9a 0b 93 71 | p1 2 3 3 56fcdee47f1e031e flash - | p2 14 15 15 fed1338b6c2082df flash - | next 21296
+seed -443878645 mode 0 vl 16 16 gl 0 0 | mag 031b62e5192041d4 9a 0b 93 71 | p1 22 23 23 f05bf7fa019337d7 flash - | p2 22 23 23 f05bf7fa019337d7 flash - | next 20907
+seed -443878645 mode 1 vl 9 12 gl 1 2 | mag 031b62e5192041d4 9a 0b 93 71 | p1 13 13 14 fd5a7d8757cc3e42 flash 6,6,0 1,14,1 2,12,2 | p2 17 16 17 c3a07f487a57efd3 flash 5,15,0 5,12,1 3,12,2 | next 60239
+seed -443878645 mode 3 vl 12 9 gl 2 1 | mag 031b62e5192041d4 9a 0b 93 71 | p1 16 17 17 1abc02180f48178e flash - | p2 14 13 13 41afb0db83cadf36 flash - | next 9083
+seed -43602706 mode 0 vl 2 17 gl 0 0 | mag 35244c156d2df289 82 dc 2e 9d | p1 4 4 4 4e244b5a3d39017d flash - | p2 24 24 24 9e027db9dd08ff93 flash - | next 42523
+seed -43602706 mode 0 vl 0 0 gl 0 0 | mag 35244c156d2df289 82 dc 2e 9d | p1 1 1 2 9fc6742de0bb52c7 flash - | p2 1 1 2 9fc6742de0bb52c7 flash - | next 55938
+seed -43602706 mode 1 vl 12 12 gl 2 2 | mag 35244c156d2df289 82 dc 2e 9d | p1 16 17 17 bb616f8e5ebc903f flash 1,15,0 3,11,1 2,11,2 | p2 16 17 17 bb616f8e5ebc903f flash 1,15,0 3,11,1 2,11,2 | next 21056
+seed -43602706 mode 3 vl 12 12 gl 2 2 | mag 35244c156d2df289 82 dc 2e 9d | p1 16 17 17 bb616f8e5ebc903f flash - | p2 16 17 17 bb616f8e5ebc903f flash - | next 33601
+seed -422932619 mode 0 vl 3 3 gl 0 0 | mag 8669370129769d90 4a 79 c4 87 | p1 6 5 5 563ffacbd7461093 flash - | p2 6 5 5 563ffacbd7461093 flash - | next 43394
+seed -422932619 mode 0 vl 5 5 gl 0 0 | mag 8669370129769d90 4a 79 c4 87 | p1 8 8 8 d912c616aafcdc6b flash - | p2 8 8 8 d912c616aafcdc6b flash - | next 4423
+seed -422932619 mode 1 vl 6 6 gl 0 0 | mag 8669370129769d90 4a 79 c4 87 | p1 10 10 10 bcf8ef2f9d8cbe94 flash 2,14,0 4,7,1 3,8,2 | p2 10 10 10 bcf8ef2f9d8cbe94 flash 2,14,0 4,7,1 3,8,2 | next 46306
+seed -422932619 mode 3 vl 6 6 gl 0 0 | mag 8669370129769d90 4a 79 c4 87 | p1 10 10 10 bcf8ef2f9d8cbe94 flash - | p2 10 10 10 bcf8ef2f9d8cbe94 flash - | next 14615
+seed -1404183984 mode 0 vl 4 10 gl 0 0 | mag 2b857a3837200a13 72 93 ad 8c | p1 7 7 6 6b5812d93795b7d4 flash - | p2 15 14 15 a8d1a3e71dec2aa6 flash - | next 25412
+seed -1404183984 mode 0 vl 10 10 gl 0 0 | mag 2b857a3837200a13 72 93 ad 8c | p1 15 15 14 9d63b36e607c6371 flash - | p2 15 15 14 9d63b36e607c6371 flash - | next 53255
+seed -1404183984 mode 1 vl 9 6 gl 1 0 | mag 2b857a3837200a13 72 93 ad 8c | p1 13 14 13 c756e021a38ef9a6 flash 1,7,0 2,15,1 2,10,2 | p2 10 10 10 3e99ef08738ed804 flash 4,6,0 4,13,1 5,9,2 | next 47694
+seed -1404183984 mode 3 vl 6 9 gl 0 1 | mag 2b857a3837200a13 72 93 ad 8c | p1 10 10 10 0122966e7aa57f88 flash - | p2 13 13 14 afec6a62d4bfa1ea flash - | next 15289
+seed 1395583343 mode 0 vl 5 17 gl 0 0 | mag 964f7a9626c090c3 16 9b 8d b8 | p1 8 8 8 c82cbf51575e13b4 flash - | p2 24 24 24 279ac964c06ffb5d flash - | next 1567
+seed 1395583343 mode 0 vl 15 15 gl 0 0 | mag 964f7a9626c090c3 16 9b 8d b8 | p1 22 21 21 5a0c92ab233f1a8d flash - | p2 22 21 21 5a0c92ab233f1a8d flash - | next 18916
+seed 1395583343 mode 1 vl 12 6 gl 2 0 | mag 964f7a9626c090c3 16 9b 8d b8 | p1 17 17 16 9bc138a95e580ab7 flash 1,13,0 6,11,1 6,10,2 | p2 10 10 10 e8842f474a649a18 flash 2,9,0 6,15,1 4,8,2 | next 48067
+seed 1395583343 mode 3 vl 6 12 gl 0 2 | mag 964f7a9626c090c3 16 9b 8d b8 | p1 10 10 10 e7242cf7fe060714 flash - | p2 17 17 16 bce72aa4ba50787f flash - | next 10130
+seed -223737854 mode 0 vl 6 3 gl 0 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 9 10 9 54760348c920e3b6 flash - | p2 5 6 5 62bff1befe290eeb flash - | next 4246
+seed -223737854 mode 0 vl 20 20 gl 0 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 28 28 28 ce11d85231b0800e flash - | p2 28 28 28 ce11d85231b0800e flash - | next 30542
+seed -223737854 mode 1 vl 6 9 gl 0 1 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 10 10 10 a01ccd6a69b11052 flash 1,6,0 6,13,1 1,9,2 | p2 14 13 13 e3daba5278943c6f flash 4,8,0 1,13,1 2,10,2 | next 166
+seed -223737854 mode 3 vl 9 6 gl 1 0 | mag c93bb444a095d2e9 e2 78 bd 9a | p1 13 14 13 6220c6e66f3125e7 flash - | p2 10 10 10 fc9830d8b2b12524 flash - | next 41783
+seed 376711033 mode 0 vl 7 10 gl 0 0 | mag 2d8d42b2787d15ca 2a 65 cf 43 | p1 11 10 11 9658be84aef44990 flash - | p2 14 15 15 d437cc0c74dfe5de flash - | next 28036
+seed 376711033 mode 0 vl 4 4 gl 0 0 | mag 2d8d42b2787d15ca 2a 65 cf 43 | p1 7 6 7 771d035a5de1f7aa flash - | p2 7 6 7 771d035a5de1f7aa flash - | next 24154
+seed 376711033 mode 1 vl 9 9 gl 1 1 | mag 2d8d42b2787d15ca 2a 65 cf 43 | p1 13 13 14 160edf7d2e3c89e6 flash 5,6,0 1,15,1 1,12,2 | p2 13 13 14 160edf7d2e3c89e6 flash 5,6,0 1,15,1 1,12,2 | next 16311
+seed 376711033 mode 3 vl 9 9 gl 1 1 | mag 2d8d42b2787d15ca 2a 65 cf 43 | p1 13 13 14 160edf7d2e3c89e6 flash - | p2 13 13 14 160edf7d2e3c89e6 flash - | next 2477
+seed -2099238268 mode 0 vl 8 17 gl 0 0 | mag e59fe1f6836465ac d2 6e 77 55 | p1 12 12 12 12eb74c890dc6647 flash - | p2 24 24 24 14fc6c80abf7a6f0 flash - | next 22638
+seed -2099238268 mode 0 vl 9 9 gl 0 0 | mag e59fe1f6836465ac d2 6e 77 55 | p1 13 13 14 456009d21fd2d2cd flash - | p2 13 13 14 456009d21fd2d2cd flash - | next 12295
+seed -2099238268 mode 1 vl 12 9 gl 2 1 | mag e59fe1f6836465ac d2 6e 77 55 | p1 16 17 17 690712d99e67d41c flash 1,11,0 4,13,1 6,10,2 | p2 13 13 14 3aecdd44dc9c64e3 flash 1,6,0 5,15,1 6,11,2 | next 35228
+seed -2099238268 mode 3 vl 9 12 gl 1 2 | mag e59fe1f6836465ac d2 6e 77 55 | p1 13 13 14 456009d21fd2d2cd flash - | p2 16 17 17 4ad329c15ab7a8df flash - | next 7155
+seed 1504031763 mode 0 vl 9 3 gl 0 0 | mag 4d97e3dd16adcb0b 5a e3 aa 23 | p1 14 13 13 c8f2c50e5dbe4a21 flash - | p2 5 6 5 458bf7a20d806a33 flash - | next 1490
+seed 1504031763 mode 0 vl 14 14 gl 0 0 | mag 4d97e3dd16adcb0b 5a e3 aa 23 | p1 20 20 20 244244cb232ed3a5 flash - | p2 20 20 20 244244cb232ed3a5 flash - | next 19632
+seed 1504031763 mode 1 vl 6 12 gl 0 2 | mag 4d97e3dd16adcb0b 5a e3 aa 23 | p1 10 10 10 933e663e82537383 flash 4,14,0 5,6,1 1,8,2 | p2 17 17 16 51879c3a98747c0f flash 3,15,0 3,12,1 5,12,2 | next 51002
+seed 1504031763 mode 3 vl 12 6 gl 2 0 | mag 4d97e3dd16adcb0b 5a e3 aa 23 | p1 17 17 16 f0e1c5133ba2bcfb flash - | p2 10 10 10 57af720af572098f flash - | next 13190
+seed 1702079062 mode 0 vl 10 10 gl 0 0 | mag e6fc89c8cbeca258 42 d4 99 95 | p1 15 14 15 52acc3426ae91b24 flash - | p2 15 14 15 52acc3426ae91b24 flash - | next 3782
+seed 1702079062 mode 0 vl 19 19 gl 0 0 | mag e6fc89c8cbeca258 42 d4 99 95 | p1 27 26 27 41b78c8b319e053d flash - | p2 27 26 27 41b78c8b319e053d flash - | next 15753
+seed 1702079062 mode 1 vl 9 12 gl 1 2 | mag e6fc89c8cbeca258 42 d4 99 95 | p1 13 13 14 832c889fdce28334 flash 3,14,0 4,11,1 2,6,2 | p2 17 17 16 d4daca2ee30dfae0 flash 3,13,0 2,11,1 2,12,2 | next 36141
+seed 1702079062 mode 3 vl 12 9 gl 2 1 | mag e6fc89c8cbeca258 42 d4 99 95 | p1 17 16 17 d37a401a85f42427 flash - | p2 13 14 13 109f4640bc725515 flash - | next 21632
+seed 462609853 mode 0 vl 11 17 gl 0 0 | mag 071b320aa7b231a7 0a 11 ec 97 | p1 16 16 16 96b5c77ca9264b74 flash - | p2 24 24 24 76a10af86bfed31d flash - | next 24375
+seed 462609853 mode 0 vl 3 3 gl 0 0 | mag 071b320aa7b231a7 0a 11 ec 97 | p1 5 5 6 091b75aec3cdd957 flash - | p2 5 5 6 091b75aec3cdd957 flash - | next 26937
+seed 462609853 mode 1 vl 12 12 gl 2 2 | mag 071b320aa7b231a7 0a 11 ec 97 | p1 17 16 17 1e80fe5106345cfe flash 1,12,0 6,14,1 3,10,2 | p2 17 16 17 1e80fe5106345cfe flash 1,12,0 6,14,1 3,10,2 | next 31793
+seed 462609853 mode 3 vl 12 12 gl 2 2 | mag 071b320aa7b231a7 0a 11 ec 97 | p1 17 16 17 1e80fe5106345cfe flash - | p2 17 16 17 1e80fe5106345cfe flash - | next 27679
+seed -827161608 mode 0 vl 12 3 gl 0 0 | mag 0dda267d0b1eed81 32 2a 9b 7d | p1 17 17 18 499787d707e19223 flash - | p2 5 6 5 fdeedf5b04e43a44 flash - | next 57755
+seed -827161608 mode 0 vl 8 8 gl 0 0 | mag 0dda267d0b1eed81 32 2a 9b 7d | p1 12 12 12 538fd45a3ffa1c1a flash - | p2 12 12 12 538fd45a3ffa1c1a flash - | next 26805
+seed -827161608 mode 1 vl 6 6 gl 0 0 | mag 0dda267d0b1eed81 32 2a 9b 7d | p1 10 10 10 2567f9d4ec56657b flash 5,7,0 5,14,1 6,6,2 | p2 10 10 10 2567f9d4ec56657b flash 5,7,0 5,14,1 6,6,2 | next 65248
+seed -827161608 mode 3 vl 6 6 gl 0 0 | mag 0dda267d0b1eed81 32 2a 9b 7d | p1 10 10 10 2567f9d4ec56657b flash - | p2 10 10 10 2567f9d4ec56657b flash - | next 17606
+seed -1085507849 mode 0 vl 13 10 gl 0 0 | mag 7ab9898ce99a8dff 3a 6f 7e 2b | p1 19 19 18 7eeb9b4b7a761fd3 flash - | p2 14 15 15 eff3b119cbcd1585 flash - | next 65160
+seed -1085507849 mode 0 vl 13 13 gl 0 0 | mag 7ab9898ce99a8dff 3a 6f 7e 2b | p1 19 19 18 7eeb9b4b7a761fd3 flash - | p2 19 19 18 7eeb9b4b7a761fd3 flash - | next 15971
+seed -1085507849 mode 1 vl 9 6 gl 1 0 | mag 7ab9898ce99a8dff 3a 6f 7e 2b | p1 13 14 13 d1519939efcf6a28 flash 1,13,0 5,12,1 3,9,2 | p2 10 10 10 12d7b351e6658250 flash 4,7,0 6,7,1 4,15,2 | next 9319
+seed -1085507849 mode 3 vl 6 9 gl 0 1 | mag 7ab9898ce99a8dff 3a 6f 7e 2b | p1 10 10 10 a645600da3e37773 flash - | p2 13 14 13 506a4c9aa0c21811 flash - | next 38646
+seed 148269034 mode 0 vl 14 17 gl 0 0 | mag 63b258d351773f29 a2 f0 05 01 | p1 20 20 20 2dadd4333ba2f871 flash - | p2 24 24 24 405ed40549fa9f80 flash - | next 2684
+seed 148269034 mode 0 vl 18 18 gl 0 0 | mag 63b258d351773f29 a2 f0 05 01 | p1 25 25 26 807616301736175e flash - | p2 25 25 26 807616301736175e flash - | next 56671
+seed 148269034 mode 1 vl 12 6 gl 2 0 | mag 63b258d351773f29 a2 f0 05 01 | p1 17 16 17 a78f93ac2e7e523f flash 4,11,0 5,11,1 6,14,2 | p2 10 10 10 eb4f8aa69d78440b flash 1,9,0 3,9,1 5,15,2 | next 18640
+seed 148269034 mode 3 vl 6 12 gl 0 2 | mag 63b258d351773f29 a2 f0 05 01 | p1 10 10 10 7d02ec87853e64c6 flash - | p2 17 16 17 f49d0076f3c50530 flash - | next 11175
+seed 1116960321 mode 0 vl 15 3 gl 0 0 | mag 229beccb30462720 ea 7d e0 df | p1 21 22 21 b3065737925bb0a6 flash - | p2 6 5 5 5ca78609aa21b9ed flash - | next 36924
+seed 1116960321 mode 0 vl 2 2 gl 0 0 | mag 229beccb30462720 ea 7d e0 df | p1 4 4 4 52c83fb075fccc39 flash - | p2 4 4 4 52c83fb075fccc39 flash - | next 38966
+seed 1116960321 mode 1 vl 6 9 gl 0 1 | mag 229beccb30462720 ea 7d e0 df | p1 10 10 10 59d92b85fb5e551a flash 5,13,0 4,7,1 5,8,2 | p2 13 14 13 3c098d989533e31a flash 5,13,0 5,10,1 6,9,2 | next 45331
+seed 1116960321 mode 3 vl 9 6 gl 1 0 | mag 229beccb30462720 ea 7d e0 df | p1 13 14 13 ffec4995f4a8b71d flash - | p2 10 10 10 dbc6786b80aabeca flash - | next 21055
+seed -345843028 mode 0 vl 16 10 gl 0 0 | mag a930ca01ff937615 92 a6 ff 25 | p1 23 22 23 c4edb70a79466830 flash - | p2 15 14 15 d850a12e6eef2382 flash - | next 51356
+seed -345843028 mode 0 vl 7 7 gl 0 0 | mag a930ca01ff937615 92 a6 ff 25 | p1 11 10 11 aebde9aa886af2eb flash - | p2 11 10 11 aebde9aa886af2eb flash - | next 7056
+seed -345843028 mode 1 vl 9 9 gl 1 1 | mag a930ca01ff937615 92 a6 ff 25 | p1 13 13 14 5f72760e08cbb7de flash 1,15,0 3,10,1 6,6,2 | p2 13 13 14 5f72760e08cbb7de flash 1,15,0 3,10,1 6,6,2 | next 5544
+seed -345843028 mode 3 vl 9 9 gl 1 1 | mag a930ca01ff937615 92 a6 ff 25 | p1 13 13 14 5f72760e08cbb7de flash - | p2 13 13 14 5f72760e08cbb7de flash - | next 15269
+seed -295660005 mode 0 vl 17 17 gl 0 0 | mag 63b756111ee6b14a 1a bb 92 b3 | p1 24 24 24 11f74d1a37ecd4c6 flash - | p2 24 24 24 11f74d1a37ecd4c6 flash - | next 56808
+seed -295660005 mode 0 vl 12 12 gl 0 0 | mag 63b756111ee6b14a 1a bb 92 b3 | p1 17 18 17 7e7ac80e3cb1ff33 flash - | p2 17 18 17 7e7ac80e3cb1ff33 flash - | next 64040
+seed -295660005 mode 1 vl 12 9 gl 2 1 | mag 63b756111ee6b14a 1a bb 92 b3 | p1 16 17 17 ffb3c8b1be67ec4f flash 6,14,0 2,12,1 1,10,2 | p2 13 14 13 552f6605bc4de01a flash 5,13,0 6,11,1 2,6,2 | next 55627
+seed -295660005 mode 3 vl 9 12 gl 1 2 | mag 63b756111ee6b14a 1a bb 92 b3 | p1 13 14 13 e0a6e86594846da1 flash - | p2 16 17 17 5ba3549914288778 flash - | next 55577
+seed 2076726462 mode 0 vl 18 3 gl 0 0 | mag 98fe6b0477cf2d28 02 cc e9 5e | p1 25 25 26 cedaf06de355a63f flash - | p2 5 5 6 ca759989dec2f6e8 flash - | next 63610
+seed 2076726462 mode 0 vl 17 17 gl 0 0 | mag 98fe6b0477cf2d28 02 cc e9 5e | p1 24 24 24 d32bb96f1e9e9f80 flash - | p2 24 24 24 d32bb96f1e9e9f80 flash - | next 63391
+seed 2076726462 mode 1 vl 6 12 gl 0 2 | mag 98fe6b0477cf2d28 02 cc e9 5e | p1 10 10 10 48ed188f217851c4 flash 1,6,0 3,9,1 5,15,2 | p2 16 17 17 f7c8b6caaf33edb5 flash 1,11,0 5,11,1 4,14,2 | next 59230
+seed 2076726462 mode 3 vl 12 6 gl 2 0 | mag 98fe6b0477cf2d28 02 cc e9 5e | p1 16 17 17 87dd23ef87ad0b70 flash - | p2 10 10 10 099d334ba2bce6c6 flash - | next 43407
+seed -1645415163 mode 0 vl 19 10 gl 0 0 | mag 7c7455791fc641a3 ca a9 14 37 | p1 27 26 27 d18159780161ff3f flash - | p2 14 15 15 3c41e4dc8aef7e30 flash - | next 35009
+seed -1645415163 mode 0 vl 1 1 gl 0 0 | mag 7c7455791fc641a3 ca a9 14 37 | p1 3 2 3 d17613be67eccd2a flash - | p2 3 2 3 d17613be67eccd2a flash - | next 44471
+seed -1645415163 mode 1 vl 9 12 gl 1 2 | mag 7c7455791fc641a3 ca a9 14 37 | p1 14 13 13 15346adbe37bd402 flash 3,13,0 2,10,1 1,9,2 | p2 17 17 16 101b756a5f977d5a flash 3,13,0 1,12,1 3,10,2 | next 42222
+seed -1645415163 mode 3 vl 12 9 gl 2 1 | mag 7c7455791fc641a3 ca a9 14 37 | p1 17 16 17 1c2f67309caf283e flash - | p2 13 13 14 3d1dc9429e2b2bf5 flash - | next 4676
+seed -1735105888 mode 0 vl 20 17 gl 0 0 | mag 573dc6531dd81ddb f2 e2 a3 4d | p1 28 28 28 9c043db343fa1a14 flash - | p2 24 24 24 31eeba32e541ac0d flash - | next 12540
+seed -1735105888 mode 0 vl 6 6 gl 0 0 | mag 573dc6531dd81ddb f2 e2 a3 4d | p1 9 9 10 52f2230b895d8460 flash - | p2 9 9 10 52f2230b895d8460 flash - | next 2674
+seed -1735105888 mode 1 vl 12 12 gl 2 2 | mag 573dc6531dd81ddb f2 e2 a3 4d | p1 17 16 17 693dd19565c0780f flash 1,12,0 4,10,1 3,15,2 | p2 17 16 17 693dd19565c0780f flash 1,12,0 4,10,1 3,15,2 | next 23962
+seed -1735105888 mode 3 vl 12 12 gl 2 2 | mag 573dc6531dd81ddb f2 e2 a3 4d | p1 17 16 17 693dd19565c0780f flash - | p2 17 16 17 693dd19565c0780f flash - | next 5443
+seed -1125927553 mode 0 vl 0 3 gl 0 0 | mag 52545299a2c42304 fa e6 bb 7d | p1 1 2 1 df344955769bbf2d flash - | p2 6 5 5 e39ee5846f1a366e flash - | next 46756
+seed -1125927553 mode 0 vl 11 11 gl 0 0 | mag 52545299a2c42304 fa e6 bb 7d | p1 16 16 16 0a38088640ab0aab flash - | p2 16 16 16 0a38088640ab0aab flash - | next 59341
+seed -1125927553 mode 1 vl 6 6 gl 0 0 | mag 52545299a2c42304 fa e6 bb 7d | p1 10 10 10 8f6ce187b928e40f flash 3,9,0 6,15,1 3,6,2 | p2 10 10 10 8f6ce187b928e40f flash 3,9,0 6,15,1 3,6,2 | next 38839
+seed -1125927553 mode 3 vl 6 6 gl 0 0 | mag 52545299a2c42304 fa e6 bb 7d | p1 10 10 10 8f6ce187b928e40f flash - | p2 10 10 10 8f6ce187b928e40f flash - | next 31445
+seed 17 mode 0 vl 20 20 gl 0 0 | mag a5ef0374a60802be 6a 70 ab ce | p1 28 28 28 930b0067aa7a6f40 flash - | p2 28 28 28 930b0067aa7a6f40 flash - | next 10095
+seed 17 mode 0 vl 20 20 gl 0 0 | mag a5ef0374a60802be 6a 70 ab ce | p1 28 28 28 930b0067aa7a6f40 flash - | p2 28 28 28 930b0067aa7a6f40 flash - | next 10095
+seed 5019 mode 0 vl 20 20 gl 0 0 | mag 6b1ea4c39d40fef3 1a 3b 12 b3 | p1 28 28 28 df867e7af9fff210 flash - | p2 28 28 28 df867e7af9fff210 flash - | next 42647
+seed 5019 mode 0 vl 19 20 gl 0 0 | mag 6b1ea4c39d40fef3 1a 3b 12 b3 | p1 27 26 27 b419ae88bf5c856f flash - | p2 28 28 28 f615e7d4c2e1b270 flash - | next 7780
+seed 10025 mode 0 vl 20 20 gl 0 0 | mag 083d9dc8f0ec1f8c aa f5 28 2f | p1 28 28 28 9edd8e4640932a99 flash - | p2 28 28 28 9edd8e4640932a99 flash - | next 31568
+seed 10025 mode 0 vl 18 20 gl 0 0 | mag 083d9dc8f0ec1f8c aa f5 28 2f | p1 26 25 25 3e35e04b1091f0f3 flash - | p2 28 28 28 8688a270b31cc517 flash - | next 51066
+seed 15028 mode 0 vl 20 20 gl 0 0 | mag 9894a90b23f38376 52 7e e7 b5 | p1 28 28 28 41d7867b7e120455 flash - | p2 28 28 28 41d7867b7e120455 flash - | next 7553
+seed 15028 mode 0 vl 20 20 gl 0 0 | mag 9894a90b23f38376 52 7e e7 b5 | p1 28 28 28 41d7867b7e120455 flash - | p2 28 28 28 41d7867b7e120455 flash - | next 7553
+seed 20040 mode 0 vl 20 20 gl 0 0 | mag f0bd1c4153ef31cf b2 9a ab 1d | p1 28 28 28 575b3c5e3a64655f flash - | p2 28 28 28 575b3c5e3a64655f flash - | next 13765
+seed 20040 mode 0 vl 19 20 gl 0 0 | mag f0bd1c4153ef31cf b2 9a ab 1d | p1 27 27 26 9c962c9cdef96b9e flash - | p2 28 28 28 4caf3c8c781a7a6a flash - | next 46399
+seed 25056 mode 0 vl 20 20 gl 0 0 | mag 9a2aa4396fe05bd8 f2 a2 e3 cd | p1 28 28 28 c37c1248db8ea8c7 flash - | p2 28 28 28 c37c1248db8ea8c7 flash - | next 47190
+seed 25056 mode 0 vl 18 20 gl 0 0 | mag 9a2aa4396fe05bd8 f2 a2 e3 cd | p1 25 26 25 694c480950128635 flash - | p2 28 28 28 920cd2abb42c5980 flash - | next 11492
+seed 30076 mode 0 vl 20 20 gl 0 0 | mag 8971950f5f86c261 12 96 8f c5 | p1 28 28 28 1ca49b0c096e762a flash - | p2 28 28 28 1ca49b0c096e762a flash - | next 46775
+seed 30076 mode 0 vl 20 20 gl 0 0 | mag 8971950f5f86c261 12 96 8f c5 | p1 28 28 28 1ca49b0c096e762a flash - | p2 28 28 28 1ca49b0c096e762a flash - | next 46775
+seed 35088 mode 0 vl 20 20 gl 0 0 | mag 25b2b6765bf1067c 72 b2 53 2d | p1 28 28 28 5a501c8899cc3762 flash - | p2 28 28 28 5a501c8899cc3762 flash - | next 64719
+seed 35088 mode 0 vl 19 20 gl 0 0 | mag 25b2b6765bf1067c 72 b2 53 2d | p1 27 26 27 be0673b573db125f flash - | p2 28 28 28 d7759f329520487f flash - | next 31113
+seed 40138 mode 0 vl 20 20 gl 0 0 | mag 70bf8b42f5d91df9 a2 90 65 c1 | p1 28 28 28 dc6e1d84333aa914 flash - | p2 28 28 28 dc6e1d84333aa914 flash - | next 62873
+seed 40138 mode 0 vl 18 20 gl 0 0 | mag 70bf8b42f5d91df9 a2 90 65 c1 | p1 25 26 25 5ac0748a8d935792 flash - | p2 28 28 28 c33e445c83f668a4 flash - | next 39310
+seed 45169 mode 0 vl 20 20 gl 0 0 | mag 8cbb0c15731e3cb8 6a 8d 50 3f | p1 28 28 28 20755287cd5cc07c flash - | p2 28 28 28 20755287cd5cc07c flash - | next 16590
+seed 45169 mode 0 vl 20 20 gl 0 0 | mag 8cbb0c15731e3cb8 6a 8d 50 3f | p1 28 28 28 20755287cd5cc07c flash - | p2 28 28 28 20755287cd5cc07c flash - | next 16590
+seed 50209 mode 0 vl 20 20 gl 0 0 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 28 28 28 15868d302e57a5b5 flash - | p2 28 28 28 15868d302e57a5b5 flash - | next 50212
+seed 50209 mode 0 vl 19 20 gl 0 0 | mag 230d81eed8b51fa9 ea 1d 40 9f | p1 26 27 27 43de104da1034441 flash - | p2 28 28 28 5d307cdee56b579b flash - | next 28941
+seed 55226 mode 0 vl 20 20 gl 0 0 | mag d6cb40be528e69b2 22 e0 95 a1 | p1 28 28 28 29d89a767e0f99fb flash - | p2 28 28 28 29d89a767e0f99fb flash - | next 7360
+seed 55226 mode 0 vl 18 20 gl 0 0 | mag d6cb40be528e69b2 22 e0 95 a1 | p1 25 25 26 c8e3fc1f09902868 flash - | p2 28 28 28 33a5bd51176907e2 flash - | next 30965

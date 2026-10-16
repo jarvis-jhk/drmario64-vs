@@ -18,7 +18,7 @@ configure_file(src/version.h.in ${CMAKE_BINARY_DIR}/generated/version.h @ONLY)
 
 # Deterministic engine core: no SDL, no clock, no I/O. Everything the original game
 # decides happens here, so it can be golden-tested headless frame by frame.
-add_library(dmcore STATIC src/core/rng.c)
+add_library(dmcore STATIC src/core/rng.c src/core/setup.c)
 target_include_directories(dmcore PUBLIC src/core ${CMAKE_BINARY_DIR}/generated)
 
 enable_testing()
