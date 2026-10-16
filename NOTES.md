@@ -134,9 +134,10 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   update check at each start unless `DM_AUTO_UPDATE=0` or `.warpzone-managed` is present.
   add-to-steam tested locally against a fake userdata dir.
 - ⚠️ The repo is PRIVATE: until the adhoc visibility gate flips it, installer and update
-  check cannot download (anonymous GitHub). Gate request filed 2026-10-16. Note for the
+  check cannot download (anonymous GitHub). Gate request t_mvawc20m2i8uf5 (adhoc) filed 2026-10-16; it files "announce v0.1.0 + Warpzone PR" back to this lane when public. Note for the
   gate: the GitHub auto-init commit c278833 carries the account e-mail, not the noreply.
-- Open, Jan's test: install on the Deck, two real pads, keyboard layout feel.
+- v0.1.0 published by Release run 38894279910 (all jobs green); downloaded assets match SHA256SUMS, the Linux tree runs here, Windows zip carries only SDL2.dll (the restricted-PATH smoke passed). Next version > v0.1.0.
+- Open, Jan.s test: install on the Deck, two real pads, keyboard layout feel.
 
 ## Decisions
 
