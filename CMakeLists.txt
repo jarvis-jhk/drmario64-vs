@@ -18,13 +18,18 @@ configure_file(src/version.h.in ${CMAKE_BINARY_DIR}/generated/version.h @ONLY)
 
 # Deterministic engine core: no SDL, no clock, no I/O. Everything the original game
 # decides happens here, so it can be golden-tested headless frame by frame.
-add_library(dmcore STATIC src/core/rng.c src/core/setup.c)
+add_library(dmcore STATIC src/core/rng.c src/core/setup.c src/core/vs.c)
 target_include_directories(dmcore PUBLIC src/core ${CMAKE_BINARY_DIR}/generated)
 
 enable_testing()
 add_executable(test_core tests/test_core.c)
 target_link_libraries(test_core PRIVATE dmcore)
 add_test(NAME core COMMAND test_core ${CMAKE_SOURCE_DIR}/tests/fixtures)
+# Golden traces: the VS engine against the original's per-tick state (tools/oracle).
+add_executable(test_vs tests/test_vs.c)
+target_link_libraries(test_vs PRIVATE dmcore)
+add_test(NAME vs_traces COMMAND test_vs ${CMAKE_SOURCE_DIR}/tests/movies)
+set_tests_properties(vs_traces PROPERTIES TIMEOUT 900)
 
 if(DM_BUILD_APP)
   find_package(SDL2 REQUIRED)

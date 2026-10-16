@@ -68,5 +68,29 @@ reports the first diverging tick with a readable dump of both boards.
   covered. Generate: `tools/oracle/build.sh <decomp> > tests/fixtures/setup.txt`.
   ⚠️ ultralib's `s32`/`u32` are `long`; the script pins them to `int` with a shim
   header so the 32-bit wraparound matches the N64.
-- The per-tick trace oracle (input movies, `dm_game_main_cnt`) is M1 work, built
-  alongside the engine it checks.
+- **Per-tick trace oracle** (M1, 2026-10-16): `tools/oracle/build_trace.sh <decomp> tests/movies`
+  compiles the decomp's whole `dm_game_main.c` (into `glue.c`, which reaches its private
+  `watchGame`), `joy.c`, `main1x.c`, `calc.c`, `dm_virus_init.c`, plus `stubs.c` for the
+  ~170 graphics/audio/OS/CPU symbols. Each tick runs the real frame order:
+  `dm_game_main2()` → `dm_game_graphic_onDoneSawp()` (joyProcCore, dm_make_key,
+  key_control_main) → the countdown step of `dm_game_graphic_effect`. Two scripted
+  players (our code) produce the pads from the oracle's own state; one process per movie,
+  so movies do not depend on each other.
+  Format actually used (`.dmm`): `cfg …`, `i <tick> <p1> <p2>` (pads from that tick),
+  `b <tick> <p> x,y,c …` (junk pills set after the tick), `n <tick>` (next round started
+  after the tick), `h <tick> <fnv64>` every 60 ticks = rolling hash of every tick's full
+  text state dump, `end <ticks> <hash> wins a b`. The dump (glue.c `dump_state`, engine
+  `dm_vs_dump`) holds every logic field of both players, both bottles cell by cell, the
+  capsule and next capsule, garbage queues, FLASH targets, the TIME ATTACK result
+  counters, pad/auto-repeat state and the sound effects of the tick. Masked: a live
+  virus's animation frame (graphics thread).
+  `tests/test_vs.c` replays all movies through `src/core/vs.c`; `DM_DUMP=a:b` prints the
+  engine's dumps, `build_trace.sh <decomp> <dir> <movie> a b` the original's, for a diff.
+- Corpus (21 movies, ~280k ticks): NORMAL/FLASH/TIME ATTACK, levels 0–20, all speeds,
+  1–3 wins, aimed play, taps, held DAS, mashing, soft drop on/off, pauses by both
+  players, mirrored players (equal bottles → draws), junk-filled bottles for 2/3/4-line
+  chains and attacks while garbage is pending, top-outs, TA time-outs and results.
+- Two console details the oracle settles explicitly: the countdown length is asset data
+  (`COUNTDOWN_FRAMES`/`DM_COUNTDOWN_FRAMES` = 164 display frames, UNVERIFIED, emulator
+  item), and after a decided match the EEPROM write skips the pad read for its duration;
+  both sides model that as exactly the one frame the match is decided in.

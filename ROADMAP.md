@@ -8,7 +8,8 @@
   `dm_game_main_cnt`/`key_control_main`, docs/TRACES.md) and the headless
   deterministic VS engine in C; golden-trace tests
   match the original frame-for-frame (pill RNG, viruses, gravity, DAS, rotation,
-  clears, garbage, win/lose).
+  clears, garbage, win/lose). **Done 2026-10-16**: `src/core/vs.c` replays 29 oracle
+  movies (~440k ticks, NORMAL/FLASH/TIME ATTACK) with every tick's full state identical.
 - **M2 Playable 1v1** — SDL2 frontend, two controllers + keyboard, VS menu
   (level/speed per player), vector renderer in the original layout, 4K-crisp; SFX.
 - **M3 Release & Deck** — Linux/Windows/Deck builds, installer with desktop file,

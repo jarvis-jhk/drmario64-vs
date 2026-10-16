@@ -1,0 +1,2 @@
+tests/movies/*.dmm text eol=lf
+tests/fixtures/*.txt text eol=lf

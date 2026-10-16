@@ -43,6 +43,34 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   to the 🔬 re lane on the laptop (push a branch, report API lane "re"); here only one
   incremental build + a focused test, max two compiler jobs. GitHub CI unchanged.
 
+## 2026-10-16 — M1 engine core done
+
+- **Per-tick oracle** `tools/oracle/build_trace.sh <decomp> tests/movies`: the decomp's
+  whole `dm_game_main.c` + `joy.c`/`main1x.c`/`calc.c`/`dm_virus_init.c` natively, ~170
+  stubs, the real frame order (main2 → onDoneSawp → countdown). Scripted players (our
+  code) make the input; junk/chain4/thin injections force multi-line chains, 4-line
+  attacks, attacks onto pending garbage and TIME ATTACK clears. One process per movie.
+  Needs `-no-pie`: the decomp's own `uintptr_t` is 32-bit. `dm_draw_capsel_by_cpu_tentative`
+  (framebuffer drawing) is cut by sed at build time.
+- **Engine** `src/core/vs.c` (`DmVs`, `dm_vs_start/tick/next_round/round_state/dump`):
+  2P state machine, pause, retry menus (result supplied by the frontend), results,
+  TIME ATTACK tally, joy.c auto-repeat. `tests/test_vs.c` (ctest `vs_traces`, ~45 s
+  UBSan Debug locally) replays all 29 movies: identical rolling hash of the full text dump
+  at every 60-tick checkpoint and at the end, plus identical round transitions.
+- Negative controls (each mutation, then the 27/29-movie run): DAS 12→11 and 6→5 (all
+  fail), fast-set charge −1 (all), erase wait 18→17 (all), soft-drop rounding (25),
+  BonusWait entry (15), black-up 6→5 (12), warning rows 3→2 (12), kick-left removed (9),
+  EEPROM pad skip removed (5), 4-line pattern / voice index / TA points (2 each),
+  pause restore (1), garbage-parity branch (pending-b fails).
+- Console details settled in both sides alike: countdown = 164 display frames
+  (`DM_COUNTDOWN_FRAMES`, asset data, still UNVERIFIED → emulator check), and after a
+  decided match the EEPROM write skips the pad read for exactly that frame (the real
+  length is the cartridge's write time; we save nothing there).
+- Not modelled (display only): virus wobble frame (masked in the dump, still animated in
+  the engine for rendering), stars, score popups, character animations, music.
+- Next: M2 (SDL frontend: menus that set `retry_result`, renderer, input mapping). The
+  emulator route for countdown length and input latency stays a 🔬 re-lane job.
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in
@@ -54,9 +82,9 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Win/draw jingles are music sequences in the original. Jan wants no music: skip them
   for v0.1; revisit if the round end feels empty.
 
-## Next (M1)
+## Next (M2)
 
-1. Per-tick oracle: link `dm_game_main.c` natively (needs `build/us/.../*.msg.inc` on
-   the include path and ~200 stubs), movie input in place of `joyProcCore`, hash dump.
-2. Port capsule movement/DAS/rotation/gravity/clears/garbage into dmcore against it.
+1. SDL frontend on `DmVs`: VS setup screen (mode, level/speed per player, wins), the
+   retry/pause menus (`retry_result`), keyboard + two pads.
+2. Vector renderer in the original layout; SFX from the user's ROM (decided above).
 3. Emulator route for countdown length / latency (heavy: re lane).
