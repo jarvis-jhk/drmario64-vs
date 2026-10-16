@@ -4,3 +4,4 @@ build*/
 *.v64
 rom/
 extracted/
+__pycache__/
