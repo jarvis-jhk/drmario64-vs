@@ -31,6 +31,7 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   checked in): 280 golden rounds in `tests/fixtures/setup.txt`. `src/core/setup.c`
   ports `dm_make_magazine`, `_dm_virus_init` (scan every 3rd attempt, restart after the
   3rd failed scan), `make_flash_virus_pos` and the equal-level copy; all 280 match.
+- CI run 38877842697 green on 1d9fd39 (Linux ASan/UBSan + native Windows).
 - Original quirk kept: MakeFlash's `selected[0x60]` is indexed by cell index (≤127)
   and overruns into `decideBuf[0]`; emulated with one shared array. Practically
   unreachable (no effect in 3M random FLASH rounds), so the fixture cannot prove it.
