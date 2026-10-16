@@ -120,6 +120,24 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - **Open, Jan's test**: real pads, the Deck, and the feel of keyboard/pads; the default
   key layout is a guess.
 
+## 2026-10-16 — M3 release packaging
+
+- `--art DIR` renders the five Steam grid pictures (portrait 600×900, capsule 920×430, hero
+  1920×620, logo 1280×320 with alpha, icon 256×256) with our vector art; ctest `app_art`.
+- `.github/workflows/release.yml` (v* tags): Release build with `DM_VERSION` = tag and
+  fault reports ON, all tests, `--version` check, packaged-tree smoke (launcher + bundled
+  SDL draws a bot round), tarball / Windows zip (DLLs found by ldd, licences, libiconv
+  source if needed) / `Install-DrMario64-VS.desktop` / install.sh / launcher.py / SHA256SUMS.
+  A normal release (not prerelease): the launcher reads `releases/latest`.
+- tools/linux + tools/windows adapted from gtetrinet-ng (GPL headers kept, THIRD_PARTY.md).
+  Install root `~/.local/share/drmario64-vs/<tag>`, `current` symlink swapped atomically;
+  update check at each start unless `DM_AUTO_UPDATE=0` or `.warpzone-managed` is present.
+  add-to-steam tested locally against a fake userdata dir.
+- ⚠️ The repo is PRIVATE: until the adhoc visibility gate flips it, installer and update
+  check cannot download (anonymous GitHub). Gate request filed 2026-10-16. Note for the
+  gate: the GitHub auto-init commit c278833 carries the account e-mail, not the noreply.
+- Open, Jan's test: install on the Deck, two real pads, keyboard layout feel.
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in

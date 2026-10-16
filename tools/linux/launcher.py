@@ -93,7 +93,9 @@ def main():
     install = '--install' in sys.argv
     here = Path(__file__).resolve().parents[2]
     managed = here.parent == ROOT
-    if install or (managed and os.environ.get('DM_AUTO_UPDATE') != '0'):
+    # A Warpzone launcher install (marker in its version folder) is updated by Warpzone.
+    warpzone = any((p / '.warpzone-managed').exists() for p in (here, here.parent))
+    if install or (managed and not warpzone and os.environ.get('DM_AUTO_UPDATE') != '0'):
         try:
             update(install)
         except Exception as error:

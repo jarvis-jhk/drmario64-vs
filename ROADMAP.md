@@ -15,5 +15,13 @@
   **Done 2026-10-16**: setup screen, pause/retry/REPLAY menus, AA vector renderer,
   pads + keyboard, SFX rendered from the player's ROM; headless session test + bot round.
 - **M3 Release & Deck** — Linux/Windows/Deck builds, installer with desktop file,
-  artwork and auto-update, fault reporting; first release v0.1.0.
+  artwork and auto-update, fault reporting; first release v0.1.0. **Done 2026-10-16**:
+  release workflow on v* tags (tests + packaged-tree smoke), v0.1.0 preview. Open: Jan's
+  hardware test (pads, Deck), and the repo going public (visibility gate, adhoc) so the
+  installer and auto-update can download anonymously.
+- **Warpzone** (Jan, 2026-10-16) — after going public: descriptor games/drmario64-vs.toml
+  in jarvis-jhk/warpzone (tier 0: install/launch, `[[data]]` ROM with `--rom {path}`,
+  Steam artwork) by PR. Our updater already stays silent with `.warpzone-managed`.
+  Later, after M4: online 1v1 (tier 2, rollback-free lockstep fits the deterministic
+  engine) and a 1v1 ladder.
 - **M4 Polish** — input-latency measurement, options (window/fullscreen, rebinding).
