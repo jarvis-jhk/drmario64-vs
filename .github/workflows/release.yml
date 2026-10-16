@@ -75,7 +75,8 @@ jobs:
           DM_NO_REPORT=1 ctest --test-dir build --output-on-failure
           mkdir -p dist/drmario64-vs
           cp build/drmario64-vs.exe dist/drmario64-vs/
-          cp build/_deps/libwarpzone-*/LICENSE-MIT dist/drmario64-vs/warpzone-LICENSE-MIT
+          # the Windows libwarpzone package carries no licence file: take it from the same tag
+          curl -fsSL --max-time 60 https://raw.githubusercontent.com/jarvis-jhk/warpzone/v0.1.1/LICENSE-MIT -o dist/drmario64-vs/warpzone-LICENSE-MIT
           # SDL and whatever the toolchain makes it or the exe need, with their licence notices.
           for dll in $(ldd dist/drmario64-vs/drmario64-vs.exe /ucrt64/bin/SDL2.dll | awk '$3 ~ /^\/ucrt64\/bin\// {print $3}' | sort -u); do
             cp "$dll" dist/drmario64-vs/
