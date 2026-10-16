@@ -1,0 +1,108 @@
+# A v* tag builds, tests and packages Linux (with the Steam Deck installer) and Windows, then
+# publishes the release. Layout and installer follow jarvis-jhk/gtetrinet-ng: versioned atomic
+# installs under ~/.local/share/drmario64-vs, update check at every start from releases/latest.
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y libsdl2-dev python3-pil desktop-file-utils
+      - run: |
+          tag='${{ github.ref_name }}'
+          [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DDM_VERSION="${tag#v}" -DDM_FAULT_REPORTS=ON
+          cmake --build build --parallel 2
+          DM_NO_REPORT=1 ctest --test-dir build --output-on-failure
+          test "$(./build/drmario64-vs --version)" = "drmario64-vs ${tag#v}"
+          mkdir -p dist/drmario64-vs/tools/linux dist/drmario64-vs/artwork
+          DM_NO_REPORT=1 ./build/drmario64-vs --art dist/drmario64-vs/artwork
+          python3 tools/linux/convert-artwork.py dist/drmario64-vs/artwork
+          cmake --install build --prefix "$PWD/dist/drmario64-vs"
+          bash tools/linux/bundle-linux.sh dist/drmario64-vs
+          cp tools/linux/*.py dist/drmario64-vs/tools/linux/
+          cp tools/linux/drmario64-vs.sh dist/drmario64-vs/
+          cp LICENSE README.md THIRD_PARTY.md dist/drmario64-vs/
+          cp /usr/share/doc/libsdl2-2.0-0/copyright dist/drmario64-vs/SDL2-license.txt
+          echo "$tag" > dist/drmario64-vs/VERSION
+          # The packaged tree must start on its own: launcher, bundled SDL, a bot round drawn.
+          DM_NO_REPORT=1 DM_AUTO_UPDATE=0 SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy \
+            dist/drmario64-vs/drmario64-vs.sh --shot package-smoke.bmp --demo --until round --frames 40000 --size 640x480
+          test -s package-smoke.bmp
+          tar -C dist -czf dist/drmario64-vs-linux-x86_64.tar.gz drmario64-vs
+          sed "s/@TAG@/$tag/g" tools/linux/install.sh > dist/install.sh
+          bash -n dist/install.sh
+          cp tools/linux/launcher.py dist/launcher.py
+          sed "s/@TAG@/$tag/g" tools/linux/Install-DrMario64-VS.desktop > dist/Install-DrMario64-VS.desktop
+          desktop-file-validate dist/Install-DrMario64-VS.desktop
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-release
+          path: |
+            dist/*.tar.gz
+            dist/Install-DrMario64-VS.desktop
+            dist/install.sh
+            dist/launcher.py
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-SDL2 zip
+      - run: |
+          tag='${{ github.ref_name }}'
+          [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DDM_VERSION="${tag#v}" -DDM_FAULT_REPORTS=ON
+          cmake --build build --parallel 2
+          DM_NO_REPORT=1 ctest --test-dir build --output-on-failure
+          mkdir -p dist/drmario64-vs
+          cp build/drmario64-vs.exe dist/drmario64-vs/
+          # SDL and whatever the toolchain makes it or the exe need, with their licence notices.
+          for dll in $(ldd dist/drmario64-vs/drmario64-vs.exe /ucrt64/bin/SDL2.dll | awk '$3 ~ /^\/ucrt64\/bin\// {print $3}' | sort -u); do
+            cp "$dll" dist/drmario64-vs/
+            pkg=$(pacman -Qoq "$dll" | sed 's/^mingw-w64-ucrt-x86_64-//')
+            [ ! -d "/ucrt64/share/licenses/$pkg" ] || cp -r "/ucrt64/share/licenses/$pkg" "dist/drmario64-vs/$pkg-license"
+            if [ "$pkg" = libiconv ]; then
+              v=$(pacman -Q mingw-w64-ucrt-x86_64-libiconv | awk '{print $2}')
+              curl -fsSL --max-time 120 "https://mirror.msys2.org/mingw/sources/mingw-w64-libiconv-$v.src.tar.zst" -o dist/drmario64-vs/libiconv-source.tar.zst
+            fi
+          done
+          ls dist/drmario64-vs
+          cp tools/windows/* LICENSE README.md THIRD_PARTY.md dist/drmario64-vs/
+          cp -r /ucrt64/share/licenses/SDL2 dist/drmario64-vs/SDL2-license
+          DM_NO_REPORT=1 SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy PATH=/usr/bin:/c/Windows/System32:/c/Windows \
+            ./dist/drmario64-vs/drmario64-vs.exe --shot package-smoke.bmp --demo --until round --frames 40000 --size 640x480
+          test -s package-smoke.bmp
+          echo "$tag" > dist/drmario64-vs/VERSION
+          cd dist && zip -r drmario64-vs-windows-x86_64.zip drmario64-vs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          path: dist/*.zip
+  publish:
+    needs: [linux, windows]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*-release'
+          merge-multiple: true
+          path: dist
+      - run: |
+          cd dist
+          sha256sum *.tar.gz *.zip Install-DrMario64-VS.desktop install.sh launcher.py > SHA256SUMS
+          gh release create "$GITHUB_REF_NAME" --title "Dr. Mario 64 VS ${GITHUB_REF_NAME} — preview" --notes-file ../CHANGELOG.md *.tar.gz *.zip Install-DrMario64-VS.desktop install.sh launcher.py SHA256SUMS
+        env:
+          GH_TOKEN: ${{ github.token }}

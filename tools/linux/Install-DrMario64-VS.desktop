@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Install Dr. Mario 64 VS
+Comment=Install the two-player Dr. Mario 64 VS remake on Steam Deck or Linux
+Exec=sh -c "f=\\$(mktemp) || exit 1; trap 'rm -f \\"\\$f\\"' EXIT; curl -fsSL --max-time 60 https://github.com/jarvis-jhk/drmario64-vs/releases/download/@TAG@/install.sh -o \\"\\$f\\" && grep -q 'END OF DRMARIO64-VS INSTALLER' \\"\\$f\\" && bash \\"\\$f\\" || { zenity --error --text='Downloading or running the installer failed. Please try again.' || kdialog --error 'Downloading or running the installer failed.'; exit 1; }"
+Icon=applications-games
+Terminal=true
+Categories=Game;
+StartupNotify=false

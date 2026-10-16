@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(drmario64-vs VERSION 0.0.1 LANGUAGES C)
+project(drmario64-vs VERSION 0.1.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -14,6 +14,8 @@ else()
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# Release builds pass the tag's version; everything else says which source version it is.
+set(DM_VERSION "${PROJECT_VERSION}-dev" CACHE STRING "Version shown in the game")
 configure_file(src/version.h.in ${CMAKE_BINARY_DIR}/generated/version.h @ONLY)
 
 # Deterministic engine core: no SDL, no clock, no I/O. Everything the original game
@@ -55,7 +57,7 @@ if(DM_BUILD_APP)
   else()
     set(DM_FAULT_REPORTS_VALUE 0)
   endif()
-  add_executable(drmario64-vs src/app/main.c src/app/fault.c src/app/draw.c src/app/render.c src/app/sfx.c src/app/romsfx.c)
+  add_executable(drmario64-vs WIN32 src/app/main.c src/app/fault.c src/app/draw.c src/app/render.c src/app/sfx.c src/app/romsfx.c)
   target_compile_definitions(drmario64-vs PRIVATE DM_FAULT_REPORTS=${DM_FAULT_REPORTS_VALUE})
   target_link_libraries(drmario64-vs PRIVATE dmfront)
   if(NOT MSVC)
@@ -70,9 +72,13 @@ if(DM_BUILD_APP)
     target_include_directories(drmario64-vs PRIVATE ${SDL2_INCLUDE_DIRS})
     target_link_libraries(drmario64-vs PRIVATE ${SDL2_LIBRARIES})
   endif()
+  install(TARGETS drmario64-vs RUNTIME DESTINATION bin)
   add_test(NAME app_smoke COMMAND drmario64-vs --headless --frames 120)
   set_tests_properties(app_smoke PROPERTIES TIMEOUT 30 ENVIRONMENT "DM_NO_REPORT=1;SDL_VIDEODRIVER=dummy;SDL_AUDIODRIVER=dummy")
   # Two bots play a round through the real frontend and the renderer draws it (software).
   add_test(NAME app_render COMMAND drmario64-vs --shot ${CMAKE_BINARY_DIR}/app_render.bmp --demo --until round --frames 40000 --size 960x720)
+  # The Steam artwork the release packages.
+  add_test(NAME app_art COMMAND drmario64-vs --art ${CMAKE_BINARY_DIR})
+  set_tests_properties(app_art PROPERTIES TIMEOUT 60 ENVIRONMENT "DM_NO_REPORT=1;SDL_VIDEODRIVER=dummy;SDL_AUDIODRIVER=dummy")
   set_tests_properties(app_render PROPERTIES TIMEOUT 120 ENVIRONMENT "DM_NO_REPORT=1;SDL_VIDEODRIVER=dummy;SDL_AUDIODRIVER=dummy")
 endif()

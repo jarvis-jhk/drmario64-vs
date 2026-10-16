@@ -389,3 +389,68 @@ void dm_render(DmDraw *d, const DmFront *f, int w, int h, const char *version, c
     else draw_game(d, f);
     dm_draw_flush(d);
 }
+
+/* ---- Steam library artwork (--art): our own vector art, never anything from the ROM ---- */
+
+/* Text sized to fit width wmax, at most cap high. */
+static float fit(const char *s, float cap, float wmax)
+{
+    float w = dm_text_width(s, cap);
+    return w > wmax ? cap * wmax / w : cap;
+}
+
+static void title(DmDraw *d, float cx, float cy, float cap, float wmax)
+{
+    float h = fit("DR. MARIO 64", cap, wmax);
+    dm_draw_text(d, "DR. MARIO 64", cx + h * 0.06f, cy - h * 0.5f + h * 0.06f, h, DM_ALIGN_CENTER, dm_rgba(0, 0, 0, 150));
+    dm_draw_text(d, "DR. MARIO 64", cx, cy - h * 0.5f, h, DM_ALIGN_CENTER, white);
+    float v = h * 0.75f;
+    dm_draw_text(d, "VS", cx, cy + h * 0.85f, v, DM_ALIGN_CENTER, dm_rgba(255, 214, 64, 255));
+}
+
+/* A scatter of capsules and viruses over a W×H unit canvas, deterministic. */
+static void scatter(DmDraw *d, float W, float H, int n, float size)
+{
+    uint32_t r = 2001;
+    for (int k = 0; k < n; k++) {
+        r = r * 1103515245u + 12345u;
+        float x = (float)((r >> 8) % 1000) / 1000.0f * (W - 2 * size);
+        r = r * 1103515245u + 12345u;
+        float y = (float)((r >> 8) % 1000) / 1000.0f * (H - 2 * size);
+        int p = (int)(r >> 28) % 3;
+        if (k & 1) draw_virus(d, x, y, p, k & 3, 0.9f, size / 10);
+        else if (k & 2) { draw_half(d, x, y, 2, p, 0.9f); draw_half(d, x + 10, y, 3, (p + 1) % 3, 0.9f); }
+        else { draw_half(d, x, y, 0, p, 0.9f); draw_half(d, x, y + 10, 1, (p + 2) % 3, 0.9f); }
+    }
+}
+
+int dm_render_art(DmDraw *d, const char *kind, int w, int h)
+{
+    SDL_SetRenderDrawColor(d->ren, 0, 0, 0, 0);
+    SDL_RenderClear(d->ren);
+    SDL_SetRenderDrawBlendMode(d->ren, SDL_BLENDMODE_BLEND);
+    dm_draw_begin(d, d->ren, w, h);
+    /* A canvas 100 units high, as wide as the picture: ten-unit cells read at any size. */
+    d->s = h / 100.0f;
+    d->ox = d->oy = 0;
+    float W = w / d->s, H = 100;
+    int logo_only = !strcmp(kind, "logo");
+    if (!logo_only) dm_draw_backdrop(d, w, h, dm_rgba(20, 26, 78, 255), dm_rgba(6, 8, 26, 255));
+    if (!strcmp(kind, "capsule") || !strcmp(kind, "portrait")) {
+        scatter(d, W, H, (int)(W * 0.12f), 10);
+        dm_draw_rrect(d, W * 0.04f, H * 0.3f, W * 0.92f, H * 0.4f, 4, dm_rgba(8, 12, 34, 200));
+        title(d, W / 2, H * 0.45f, 14, W * 0.84f);
+    } else if (!strcmp(kind, "hero")) {
+        scatter(d, W, H, 40, 9);
+    } else if (logo_only) {
+        title(d, W / 2, H * 0.38f, 40, W * 0.95f);
+    } else if (!strcmp(kind, "icon")) {
+        d->s = h / 40.0f; /* capsule halves are one cell: a smaller canvas makes them big */
+        dm_draw_rrect(d, 1.5f, 1.5f, 37, 37, 7, dm_rgba(14, 18, 52, 255));
+        draw_virus(d, 10, 18.5f, 0, 1, 1, 1.9f);
+        draw_half(d, 25, 7, 0, 2, 1);
+        draw_half(d, 25, 17, 1, 1, 1);
+    } else return -1;
+    dm_draw_flush(d);
+    return 0;
+}

@@ -187,11 +187,40 @@ static int shot(DmFront *f, const char *path, int w, int h, long frames, int dem
     return ok ? 0 : 1;
 }
 
+/* --art DIR: the Steam library pictures, rendered by the vector renderer (BMP with alpha;
+ * the release turns them into PNG). Names and sizes are Steam's grid conventions. */
+static int art(const char *dir)
+{
+    static const struct { const char *kind, *file; int w, h; } pics[] = {
+        { "portrait", "steamp.bmp", 600, 900 }, { "capsule", "steam.bmp", 920, 430 },
+        { "hero", "steam_hero.bmp", 1920, 620 }, { "logo", "steam_logo.bmp", 1280, 320 },
+        { "icon", "steam_icon.bmp", 256, 256 },
+    };
+    for (size_t i = 0; i < sizeof pics / sizeof pics[0]; i++) {
+        char path[1024];
+        snprintf(path, sizeof path, "%s/%s", dir, pics[i].file);
+        SDL_Surface *s = SDL_CreateRGBSurfaceWithFormat(0, pics[i].w, pics[i].h, 32, SDL_PIXELFORMAT_ARGB8888);
+        SDL_Renderer *r = s ? SDL_CreateSoftwareRenderer(s) : NULL;
+        if (!r) { fprintf(stderr, "art: %s\n", SDL_GetError()); return 1; }
+        DmDraw d;
+        memset(&d, 0, sizeof d);
+        d.ren = r;
+        int ok = dm_render_art(&d, pics[i].kind, pics[i].w, pics[i].h) == 0;
+        SDL_RenderPresent(r);
+        ok = ok && SDL_SaveBMP(s, path) == 0;
+        dm_draw_free(&d);
+        SDL_DestroyRenderer(r);
+        SDL_FreeSurface(s);
+        if (!ok) { fprintf(stderr, "art: %s failed\n", path); return 1; }
+    }
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     int headless = 0, demo = 0, fullscreen = 0, w = 1920, h = 1080;
     long frames = -1;
-    const char *shot_path = NULL, *arg_rom = NULL, *until = NULL;
+    const char *shot_path = NULL, *arg_rom = NULL, *until = NULL, *art_dir = NULL;
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--headless")) headless = 1;
         else if (!strcmp(argv[i], "--frames") && i + 1 < argc) frames = strtol(argv[++i], NULL, 10);
@@ -201,12 +230,19 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[i], "--until") && i + 1 < argc) until = argv[++i];
         else if (!strcmp(argv[i], "--fullscreen")) fullscreen = 1;
         else if (!strcmp(argv[i], "--rom") && i + 1 < argc) arg_rom = argv[++i];
+        else if (!strcmp(argv[i], "--art") && i + 1 < argc) art_dir = argv[++i];
         else if (!strcmp(argv[i], "--version")) { printf("%s %s\n", DM_APP_NAME, DM_VERSION); return 0; }
     }
     const char *version = "V" DM_VERSION;
     dm_fault_install();
     static DmFront f;
     dm_front_init(&f, (uint32_t)SDL_GetPerformanceCounter() ^ (uint32_t)(uintptr_t)&f);
+    if (art_dir) {
+        if (SDL_Init(0) != 0) return 1;
+        int rc = art(art_dir);
+        SDL_Quit();
+        return rc;
+    }
     if (shot_path) {
         dm_front_init(&f, 2001); /* reproducible pictures */
         if (SDL_Init(0) != 0) return 1;

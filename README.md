@@ -9,6 +9,19 @@ The game logic follows the behaviour documented by the matching decompilation
 [docs/SPEC.md](docs/SPEC.md). Build: `cmake -S . -B build && cmake --build build && ctest --test-dir build`
 (needs SDL2; `-DDM_BUILD_APP=OFF` builds only the headless core and its tests).
 
+## Installing
+
+From the [latest release](https://github.com/jarvis-jhk/drmario64-vs/releases/latest):
+
+- **Steam Deck / Linux**: download `Install-DrMario64-VS.desktop` (in Desktop Mode) and
+  open it. It installs the game under `~/.local/share/drmario64-vs`, adds a menu entry and
+  a Steam shortcut with artwork (close Steam first), and the game updates itself at every
+  start. Or unpack `drmario64-vs-linux-x86_64.tar.gz` and run `drmario64-vs.sh`.
+- **Windows**: unpack `drmario64-vs-windows-x86_64.zip` and run `Play.cmd`.
+
+Release builds send an anonymous one-line fault report (name, version, platform) when the
+game crashes; set `DM_NO_REPORT=1` to turn that off.
+
 ## Playing
 
 Both players set up their side on the start screen (mode NORMAL / FLASH / TIME ATTACK,
