@@ -36,6 +36,7 @@ typedef struct DmFront {
     int log_n, log_cap, replay_pos, replaying;
     int se[64], se_n;      /* this tick's sound effects, menus included */
     int8_t se_player[64];  /* the player of a character voice, else -1 */
+    int locked;            /* ranked online: the settings are fixed, the setup only readies */
 } DmFront;
 
 void dm_front_init(DmFront *f, uint32_t seed_base);
@@ -43,3 +44,5 @@ void dm_front_free(DmFront *f);
 void dm_front_tick(DmFront *f, uint16_t pad0, uint16_t pad1);
 /* The item labels of a retry/pause menu type, three each (NULL for type 0: logo only). */
 const char *const *dm_front_menu_items(int retry_type);
+/* A hash of everything the next ticks depend on (online play compares it). */
+uint32_t dm_front_hash(const DmFront *f);

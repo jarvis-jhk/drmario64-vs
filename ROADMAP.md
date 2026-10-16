@@ -22,6 +22,7 @@
 - **Warpzone** (Jan, 2026-10-16) — after going public: descriptor games/drmario64-vs.toml
   in jarvis-jhk/warpzone (tier 0: install/launch, `[[data]]` ROM with `--rom {path}`,
   Steam artwork) by PR. Our updater already stays silent with `.warpzone-managed`.
-  Later, after M4: online 1v1 (tier 2, rollback-free lockstep fits the deterministic
-  engine) and a 1v1 ladder.
+  **Online versus done 2026-10-16** (ahead of M4, Jan's roadmap order): lockstep 1v1
+  through libwarpzone 0.1.1 — code rooms, launcher join/host, relay fallback, ranked 1v1
+  queue with reports and state hash; CI plays real processes against warpzone-server.
 - **M4 Polish** — input-latency measurement, options (window/fullscreen, rebinding).

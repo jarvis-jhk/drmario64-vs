@@ -114,6 +114,7 @@ static void setup_tick(DmFront *f, const uint16_t pads[2])
             ready++;
             continue;
         }
+        if (f->locked) continue;
         int dy = (k & DM_BTN_DOWN ? 1 : 0) - (k & DM_BTN_UP ? 1 : 0);
         if (dy) {
             p->row = (p->row + dy + DM_ROWS_SETUP) % DM_ROWS_SETUP;
@@ -243,4 +244,28 @@ void dm_front_tick(DmFront *f, uint16_t pad0, uint16_t pad1)
     if (f->screen == DM_FRONT_SETUP) setup_tick(f, pads);
     else game_tick(f, pad0, pad1);
     f->frame++;
+}
+
+static uint32_t fnv(uint32_t h, const void *data, size_t n)
+{
+    const unsigned char *p = data;
+    for (size_t i = 0; i < n; i++) h = (h ^ p[i]) * 16777619u;
+    return h;
+}
+
+uint32_t dm_front_hash(const DmFront *f)
+{
+    static char buf[16384];
+    int v[8] = { f->screen, (int)f->mode, f->wins, (int)f->frame, f->match_wins[0], f->match_wins[1], f->replaying, f->replay_pos };
+    uint32_t h = fnv(2166136261u, v, sizeof v);
+    for (int i = 0; i < 2; i++) {
+        const DmPanel *p = &f->panel[i];
+        int q[6] = { p->row, p->level, p->glevel, p->speed, p->ready, p->rep };
+        h = fnv(h, q, sizeof q);
+    }
+    if (f->screen == DM_FRONT_GAME) {
+        size_t n = dm_vs_dump(&f->vs, buf, sizeof buf);
+        h = fnv(h, buf, n < sizeof buf ? n : sizeof buf);
+    }
+    return h;
 }

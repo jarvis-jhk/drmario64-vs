@@ -323,7 +323,8 @@ static void draw_game(DmDraw *d, const DmFront *f)
     if (f->replaying) dm_draw_text(d, "REPLAY", 160, 228, 5, DM_ALIGN_CENTER, (f->frame & 32) ? white : text_dim);
 }
 
-static void draw_setup(DmDraw *d, const DmFront *f, const char *version, const char *hint, const char *status)
+static void draw_setup(DmDraw *d, const DmFront *f, const char *version, const char *hint, const char *status,
+                       const char *const names[2])
 {
     char buf[48];
     dm_draw_text(d, "DR. MARIO 64", 160, 14, 16, DM_ALIGN_CENTER, white);
@@ -342,7 +343,8 @@ static void draw_setup(DmDraw *d, const DmFront *f, const char *version, const c
         const DmPanel *p = &f->panel[i];
         float cx = i ? 240 : 80, top = 62;
         panel(d, cx, top + 66, 136, 128, p->ready ? side_rgb[i] : alpha(side_rgb[i], 0.5f));
-        snprintf(buf, sizeof buf, "PLAYER %d", i + 1);
+        if (names && names[i] && names[i][0]) snprintf(buf, sizeof buf, "%s", names[i]);
+        else snprintf(buf, sizeof buf, "PLAYER %d", i + 1);
         dm_draw_text(d, buf, cx, top + 8, 8, DM_ALIGN_CENTER, side_rgb[i]);
         for (int r = 0; r < DM_ROWS_SETUP; r++) {
             float y = top + 26 + r * 22;
@@ -354,7 +356,7 @@ static void draw_setup(DmDraw *d, const DmFront *f, const char *version, const c
                 else snprintf(buf, sizeof buf, "%s", speed_name[p->glevel]);
                 v = buf;
             } else v = speed_name[p->speed];
-            int sel = p->row == r && !p->ready;
+            int sel = p->row == r && !p->ready && !f->locked;
             if (sel) dm_draw_rrect(d, cx - 62, y - 3, 124, 18, 4, alpha(side_rgb[i], 0.22f));
             dm_draw_text(d, label[r], cx - 56, y + 2, 5, DM_ALIGN_LEFT, text_dim);
             dm_draw_text(d, v, cx + 22, y + 1, 7, DM_ALIGN_CENTER, white);
@@ -373,20 +375,76 @@ static void draw_setup(DmDraw *d, const DmFront *f, const char *version, const c
     }
     dm_draw_text(d, status, 160, 196, 4.2f, DM_ALIGN_CENTER, dm_rgba(255, 214, 64, 255));
     dm_draw_text(d, hint, 160, 206, 4.2f, DM_ALIGN_CENTER, text_dim);
-    dm_draw_text(d, "UP/DOWN CHOOSE   LEFT/RIGHT CHANGE   B BACK", 160, 216, 4.2f, DM_ALIGN_CENTER, text_dim);
+    dm_draw_text(d, f->locked ? "RANKED: SAME SETTINGS FOR BOTH   A READY   B BACK" : "UP/DOWN CHOOSE   LEFT/RIGHT CHANGE   B BACK", 160,
+                 216, 4.2f, DM_ALIGN_CENTER, text_dim);
     dm_draw_text(d, version, 316, 232, 3.5f, DM_ALIGN_RIGHT, alpha(text_dim, 0.6f));
     dm_draw_text(d, "UNOFFICIAL FAN REMAKE", 4, 232, 3.5f, DM_ALIGN_LEFT, alpha(text_dim, 0.6f));
 }
 
-void dm_render(DmDraw *d, const DmFront *f, int w, int h, const char *version, const char *hint, const char *status)
+void dm_render(DmDraw *d, const DmFront *f, int w, int h, const char *version, const char *hint, const char *status,
+               const char *banner, const char *const names[2])
 {
     SDL_SetRenderDrawColor(d->ren, 0, 0, 0, 255);
     SDL_RenderClear(d->ren);
     SDL_SetRenderDrawBlendMode(d->ren, SDL_BLENDMODE_BLEND);
     dm_draw_begin(d, d->ren, w, h);
     dm_draw_backdrop(d, w, h, dm_rgba(20, 26, 78, 255), dm_rgba(6, 8, 26, 255));
-    if (f->screen == DM_FRONT_SETUP) draw_setup(d, f, version, hint, status);
+    if (f->screen == DM_FRONT_SETUP) draw_setup(d, f, version, hint, status, names);
     else draw_game(d, f);
+    if (banner && banner[0]) {
+        /* top left, clear of the centre column's labels */
+        float tw = dm_text_width(banner, 3.5f);
+        dm_draw_rrect(d, 1, 1, tw + 6, 7, 2, dm_rgba(0, 0, 0, 170));
+        dm_draw_text(d, banner, 4, 2.8f, 3.5f, DM_ALIGN_LEFT, dm_rgba(255, 214, 64, 255));
+    }
+    dm_draw_flush(d);
+}
+
+void dm_render_netui(DmDraw *d, const DmNetUi *u, const DmOnline *o, int w, int h, const char *version)
+{
+    SDL_SetRenderDrawColor(d->ren, 0, 0, 0, 255);
+    SDL_RenderClear(d->ren);
+    SDL_SetRenderDrawBlendMode(d->ren, SDL_BLENDMODE_BLEND);
+    dm_draw_begin(d, d->ren, w, h);
+    dm_draw_backdrop(d, w, h, dm_rgba(20, 26, 78, 255), dm_rgba(6, 8, 26, 255));
+    const DmRGBA gold = dm_rgba(255, 214, 64, 255), red = dm_rgba(255, 120, 110, 255);
+    dm_draw_text(d, "ONLINE VERSUS", 160, 18, 13, DM_ALIGN_CENTER, white);
+    draw_virus(d, 40, 26, 0, 0, 1, 1.2f);
+    draw_virus(d, 280, 26, 2, 2, 1, 1.2f);
+    dm_draw_text(d, o->status, 160, 42, 5, DM_ALIGN_CENTER, text_dim);
+    const char *help = "";
+    if (u->screen == DM_NU_MENU) {
+        for (int i = 0; i < DM_NU_ITEMS; i++) {
+            float y = 70 + i * 24;
+            int sel = u->sel == i, off = !o->available && i != DM_NU_BACK;
+            if (sel) dm_draw_rrect(d, 70, y - 5, 180, 20, 5, alpha(side_rgb[1], 0.25f));
+            dm_draw_text(d, dm_netui_item(i), 160, y, 8, DM_ALIGN_CENTER, off ? alpha(text_dim, 0.5f) : sel ? white : text_dim);
+        }
+        help = "UP/DOWN CHOOSE   A OK   B BACK";
+    } else if (u->screen == DM_NU_CODE || u->screen == DM_NU_NAME) {
+        dm_draw_text(d, u->screen == DM_NU_CODE ? "ROOM CODE" : "CHOOSE YOUR NAME", 160, 74, 8, DM_ALIGN_CENTER, gold);
+        char shown[24];
+        snprintf(shown, sizeof shown, "%s%s", u->text, (SDL_GetTicks() / 400) & 1 ? "_" : " ");
+        panel(d, 160, 112, 220, 34, side_rgb[1]);
+        dm_draw_text(d, shown, 160, 104, 14, DM_ALIGN_CENTER, white);
+        if (u->screen == DM_NU_NAME) dm_draw_text(d, "3 TO 16 LETTERS, DIGITS, _ OR -  - SHARED WITH ALL WARPZONE GAMES", 160, 140, 4.2f, DM_ALIGN_CENTER, text_dim);
+        help = "TYPE, OR UP/DOWN LETTER  RIGHT NEXT  LEFT DELETE  A OK  B BACK";
+    } else {
+        if (o->host && o->code[0] && !o->ranked) {
+            dm_draw_text(d, "ROOM CODE", 160, 70, 7, DM_ALIGN_CENTER, gold);
+            dm_draw_text(d, o->code, 160, 84, 22, DM_ALIGN_CENTER, white);
+            dm_draw_text(d, "THE OTHER PLAYER CHOOSES JOIN WITH A CODE", 160, 116, 4.5f, DM_ALIGN_CENTER, text_dim);
+        } else if (o->phase != DM_ON_IDLE) {
+            draw_half(d, 150, 96, 2, (SDL_GetTicks() / 300) % 3, 1);
+            draw_half(d, 160, 96, 3, (SDL_GetTicks() / 300 + 1) % 3, 1);
+        }
+        help = o->phase == DM_ON_IDLE ? "A OK   B BACK" : "B LEAVE";
+    }
+    if (o->error[0]) dm_draw_text(d, o->error, 160, 176, 5, DM_ALIGN_CENTER, red);
+    if (!o->available) dm_draw_text(d, "THIS BUILD HAS NO ONLINE PLAY", 160, 166, 5, DM_ALIGN_CENTER, red);
+    dm_draw_text(d, help, 160, 206, 4.2f, DM_ALIGN_CENTER, text_dim);
+    dm_draw_text(d, "ONLINE THROUGH WARPZONE", 4, 232, 3.5f, DM_ALIGN_LEFT, alpha(text_dim, 0.6f));
+    dm_draw_text(d, version, 316, 232, 3.5f, DM_ALIGN_RIGHT, alpha(text_dim, 0.6f));
     dm_draw_flush(d);
 }
 

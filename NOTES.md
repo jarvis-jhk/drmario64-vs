@@ -138,6 +138,44 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Warpzone launcher hand-over (2026-10-16, report-API request from the warpzone lane): the game reads `WARPZONE_DATA_ROM` at start (after `--rom`, before `DM_ROM`), and the cached sound bank now wins over any ROM path, so the launcher's `--rom` on every start is free (1c20e1b). Descriptor follow-up jarvis-jhk/warpzone#9 (on #8's branch): known .z64 fingerprint, .v64/.n64 patterns, no `present`. Roadmap item: Warpzone online versus.
 - Open, Jan.s test: install on the Deck, two real pads, keyboard layout feel.
 
+## 2026-10-16 — Warpzone online versus (roadmap item drmario-warpzone-online-versus)
+
+- `src/app/lockstep.c` (no SDL, no network): each machine owns one pad (host 0, guest 1),
+  schedules it `delay` ticks ahead, and a tick runs only when both pads are known. Packets
+  are unreliable and repeat every pad the peer has not acknowledged (ack = contiguous
+  count); every 30 ticks a hash of the whole DmFront (`dm_front_hash`: dm_vs_dump + setup
+  state) is exchanged and compared. The entire frontend (setup screen, menus, REPLAY) runs in
+  lockstep, since DmFront is deterministic from its seed and the two pads.
+  ctest `lockstep`: two machines in-process over 3 simulated links (up to 30 % loss, 25 ms
+  +60 jitter) play identical matches; a state disturbed at tick 500 is reported at 510.
+- `src/app/online.c`: libwarpzone 0.1.1 (pinned SHA-256, downloaded at configure;
+  `-DDM_WARPZONE=OFF` without). Host offers seed, input delay (2 + half the RTT in ticks,
+  max 10; `DM_NET_DELAY` forces), settings and its version on reliable channel 1; the
+  guest refuses a different version. Rooms: unlisted, entry code, preset 1v1, max 2;
+  `wz_set_closed` while playing; host keeps the room when the guest leaves. Ranked: queue
+  `1v1`, joins MATCH_FOUND only after its own QUEUED confirmation (furries' replay
+  workaround, auto_join off), fixed settings (NORMAL, level 10, MED, first to 3;
+  `DM_RANKED_WINS` for tests; DmFront.locked hides the editing), reports placements +
+  hash of the deciding tick. A session's first decided match is the one reported.
+  15 s without packets = connection lost; a desync ends the session with the tick.
+- `src/app/netui.c` + `dm_render_netui`: F2 / pad Back on the start screen → HOST A ROOM /
+  JOIN WITH A CODE / RANKED 1 VS 1; name and code entry by keyboard or pad; waiting screen
+  with the room code. Online banner top left (opponent, RTT, direct/relayed), names on the
+  setup panels. `--warpzone-host`/`--warpzone-join` (launcher), `--warpzone-code C`,
+  `--ranked`, plus test flags `--bot` (bot plays this side) and `--online-exit`.
+- `tests/test_warpzone.py` (CI Linux, also in release.yml on the release build): real
+  game processes with separate WARPZONE_HOMEs against warpzone-server 0.1.1 — room by code
+  a full 3-win match, room with 15 % of game datagrams dropped (`DM_NET_LOSS`), room with
+  every direct datagram dropped (`tests/relay_only.c` LD_PRELOAD, relay carries it), ranked
+  1v1 rated with identical reports. Windows CI: unreachable server → exit 4 in 10 s.
+  ASan + LD_PRELOAD needs `verify_asan_link_order=0`.
+- Paced (non-headless, dummy video) host/guest also agree; on this VPS the software
+  renderer only does ~30 fps, so pacing tests here are slow — not a lockstep issue.
+- Open, Jan's test: two real machines/home networks, the public server and relay (this
+  container cannot reach the public UDP relay, same as furries), pad name/code entry on
+  the Deck, how the input delay feels. The descriptor needs tier 3 + [rooms] + [[ladder]]
+  1v1 (asked the warpzone lane).
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in

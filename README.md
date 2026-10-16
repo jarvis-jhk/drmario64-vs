@@ -40,6 +40,17 @@ The first two gamepads connected are players 1 and 2; the keyboard always works 
 F11 or Alt+Enter toggles fullscreen (the Steam Deck starts fullscreen). Esc pauses, and
 quits from the start screen.
 
+**Online versus** (through [Warpzone](https://github.com/jarvis-jhk/warpzone)): on the start
+screen press F2 or a gamepad's Back button. HOST A ROOM shows a six-letter code; the other
+player picks JOIN WITH A CODE and types it (keyboard, or up/down/right on the pad). RANKED
+1 VS 1 finds an opponent of similar strength and rates the match (same settings for both:
+NORMAL, level 10, MED, first to 3). The first time, you choose a name, shared with all
+Warpzone games. The Warpzone launcher can also start the game straight into a room.
+Online, each machine plays one side with its keyboard or any pad; both run the same game
+in lockstep, so a slow line shows as a short wait ("WAITING FOR …"), never as a different
+game. The input delay is set from the connection when the game starts (2 ticks plus half
+the round trip). Esc leaves the room from the start screen.
+
 **Sound effects** come from your own copy of the game: drop your Dr. Mario 64 (USA) ROM
 (`.z64`) onto the window once, or start with `--rom <file>` (the Warpzone launcher
 hands over a ROM it found as `WARPZONE_DATA_ROM`; that is used too). The effects are rendered

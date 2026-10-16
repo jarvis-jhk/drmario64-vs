@@ -20,6 +20,12 @@ jobs:
           cmake --build build --parallel 2
           DM_NO_REPORT=1 ctest --test-dir build --output-on-failure
           test "$(./build/drmario64-vs --version)" = "drmario64-vs ${tag#v}"
+          # online versus against the released Warpzone server, with this exact build
+          curl -sSLo build/warpzone-server https://github.com/jarvis-jhk/warpzone/releases/download/v0.1.1/warpzone-server-0.1.1-x86_64-linux-musl
+          echo "559dcc87d34f6650aa9a80f0ee1321a2279da0841d41f4ff0446118511bcaa65  build/warpzone-server" | sha256sum -c -
+          chmod +x build/warpzone-server
+          gcc -shared -fPIC -O2 -o build/relay_only.so tests/relay_only.c -ldl
+          DM_NO_REPORT=1 python3 tests/test_warpzone.py build/drmario64-vs build/warpzone-server build/relay_only.so
           mkdir -p dist/drmario64-vs/tools/linux dist/drmario64-vs/artwork
           DM_NO_REPORT=1 ./build/drmario64-vs --art dist/drmario64-vs/artwork
           python3 tools/linux/convert-artwork.py dist/drmario64-vs/artwork
@@ -28,6 +34,7 @@ jobs:
           cp tools/linux/*.py dist/drmario64-vs/tools/linux/
           cp tools/linux/drmario64-vs.sh dist/drmario64-vs/
           cp LICENSE README.md THIRD_PARTY.md dist/drmario64-vs/
+          cp build/_deps/libwarpzone-*/LICENSE-MIT dist/drmario64-vs/warpzone-LICENSE-MIT
           cp /usr/share/doc/libsdl2-2.0-0/copyright dist/drmario64-vs/SDL2-license.txt
           echo "$tag" > dist/drmario64-vs/VERSION
           # The packaged tree must start on its own: launcher, bundled SDL, a bot round drawn.
@@ -68,6 +75,7 @@ jobs:
           DM_NO_REPORT=1 ctest --test-dir build --output-on-failure
           mkdir -p dist/drmario64-vs
           cp build/drmario64-vs.exe dist/drmario64-vs/
+          cp build/_deps/libwarpzone-*/LICENSE-MIT dist/drmario64-vs/warpzone-LICENSE-MIT
           # SDL and whatever the toolchain makes it or the exe need, with their licence notices.
           for dll in $(ldd dist/drmario64-vs/drmario64-vs.exe /ucrt64/bin/SDL2.dll | awk '$3 ~ /^\/ucrt64\/bin\// {print $3}' | sort -u); do
             cp "$dll" dist/drmario64-vs/

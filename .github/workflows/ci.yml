@@ -18,6 +18,16 @@ jobs:
         env:
           ASAN_OPTIONS: detect_leaks=0
           UBSAN_OPTIONS: halt_on_error=1
+      - name: Online versus over Warpzone against its released server (code rooms, lossy, relay only, ranked 1v1)
+        env:
+          ASAN_OPTIONS: detect_leaks=0:verify_asan_link_order=0
+          UBSAN_OPTIONS: halt_on_error=1
+        run: |
+          curl -sSLo build/warpzone-server https://github.com/jarvis-jhk/warpzone/releases/download/v0.1.1/warpzone-server-0.1.1-x86_64-linux-musl
+          echo "559dcc87d34f6650aa9a80f0ee1321a2279da0841d41f4ff0446118511bcaa65  build/warpzone-server" | sha256sum -c -
+          chmod +x build/warpzone-server
+          gcc -shared -fPIC -O2 -o build/relay_only.so tests/relay_only.c -ldl
+          python3 tests/test_warpzone.py build/drmario64-vs build/warpzone-server build/relay_only.so
   windows:
     runs-on: windows-latest
     defaults:
@@ -33,3 +43,11 @@ jobs:
       - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
       - run: cmake --build build --parallel 2
       - run: ctest --test-dir build --output-on-failure
+      - name: libwarpzone linked; an unreachable server is reported, not hung on
+        run: |
+          set +e
+          WARPZONE_SERVER=http://127.0.0.1:9 WARPZONE_HOME="$(cygpath -w "$PWD/build/wz-home")" DM_WZ_NAME=WinTest DM_NO_REPORT=1 \
+            SDL_VIDEODRIVER=dummy timeout 60 build/drmario64-vs.exe --headless --warpzone-host --online-exit
+          status=$?
+          echo "warpzone offline exit=$status"
+          test $status -eq 4

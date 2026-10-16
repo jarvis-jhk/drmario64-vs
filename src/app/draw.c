@@ -298,6 +298,7 @@ static const char *glyph(char ch)
     case 'Z': return "0,0 4,0 0,6 4,6";
     case ':': return "2,1.6 2,1.7|2,4.4 2,4.5";
     case '-': return "1,3 3,3";
+    case '_': return "0,6 4,6";
     case '+': return "0.5,3 3.5,3|2,1.5 2,4.5";
     case '.': return "2,5.9 2,6";
     case '!': return "2,0 2,4|2,5.9 2,6";

@@ -4,6 +4,8 @@
 #include "bot.h"
 #include "fault.h"
 #include "front.h"
+#include "netui.h"
+#include "online.h"
 #include "render.h"
 #include "sfx.h"
 #include "version.h"
@@ -14,6 +16,7 @@
 #include <string.h>
 
 #define CONTROLS_HINT "P1 WASD F/G TAB    P2 ARROWS K/L ENTER    F11 FULLSCREEN"
+#define CONTROLS_HINT_ONLINE "P1 WASD F/G TAB  P2 ARROWS K/L ENTER  F11 FULLSCREEN  F2/BACK ONLINE"
 
 /* ---- input: keyboard maps for both players, and up to two gamepads ---- */
 
@@ -178,7 +181,29 @@ static int shot(DmFront *f, const char *path, int w, int h, long frames, int dem
     DmDraw d;
     memset(&d, 0, sizeof d);
     d.ren = r;
-    dm_render(&d, f, w, h, version, CONTROLS_HINT, "");
+    if (until && !strcmp(until, "online-game")) {
+        const char *names[2] = { "DOCTOR_1", "ANNA_B" };
+        dm_render(&d, f, w, h, version, "ESC LEAVES THE ROOM", "", "RANKED  VS ANNA_B  34 MS DIRECT", names);
+    } else if (until && !strncmp(until, "online-", 7)) { /* the online screens with made-up state */
+        static DmOnline o;
+        DmNetUi u;
+        memset(&o, 0, sizeof o);
+        dm_netui_open(&u);
+        o.available = 1;
+        snprintf(o.status, sizeof o.status, "ONLINE AS DOCTOR_1");
+        if (!strcmp(until, "online-room")) {
+            u.screen = DM_NU_WAIT;
+            o.phase = DM_ON_ROOM;
+            o.host = 1;
+            snprintf(o.code, sizeof o.code, "K7QM3X");
+            snprintf(o.status, sizeof o.status, "WAITING FOR THE OPPONENT");
+        } else if (!strcmp(until, "online-code")) {
+            u.screen = DM_NU_CODE;
+            snprintf(u.text, sizeof u.text, "K7Q");
+        }
+        dm_render_netui(&d, &u, &o, w, h, version);
+    } else
+        dm_render(&d, f, w, h, version, CONTROLS_HINT, "", NULL, NULL);
     SDL_RenderPresent(r);
     int ok = SDL_SaveBMP(s, path) == 0;
     dm_draw_free(&d);
@@ -220,8 +245,10 @@ int main(int argc, char **argv)
 {
     int headless = 0, demo = 0, fullscreen = 0, w = 1920, h = 1080;
     long frames = -1;
-    const char *shot_path = NULL, *arg_rom = NULL, *until = NULL, *art_dir = NULL;
+    const char *shot_path = NULL, *arg_rom = NULL, *until = NULL, *art_dir = NULL, *join_code = NULL;
+    int ranked = 0, bot = 0, online_exit = 0, start_wins = 0, launch_online = 0;
     for (int i = 1; i < argc; i++) {
+        if (!strncmp(argv[i], "--warpzone", 10) || !strcmp(argv[i], "--ranked")) launch_online = 1;
         if (!strcmp(argv[i], "--headless")) headless = 1;
         else if (!strcmp(argv[i], "--frames") && i + 1 < argc) frames = strtol(argv[++i], NULL, 10);
         else if (!strcmp(argv[i], "--shot") && i + 1 < argc) shot_path = argv[++i];
@@ -232,6 +259,12 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[i], "--rom") && i + 1 < argc) arg_rom = argv[++i];
         else if (!strcmp(argv[i], "--art") && i + 1 < argc) art_dir = argv[++i];
         else if (!strcmp(argv[i], "--version")) { printf("%s %s\n", DM_APP_NAME, DM_VERSION); return 0; }
+        /* online: --warpzone-join/--warpzone-host come from the launcher (wz_handle_launch) */
+        else if (!strcmp(argv[i], "--warpzone-code") && i + 1 < argc) join_code = argv[++i];
+        else if (!strcmp(argv[i], "--ranked")) ranked = 1;
+        else if (!strcmp(argv[i], "--bot")) bot = 1;              /* tests: a bot plays this machine's side */
+        else if (!strcmp(argv[i], "--online-exit")) online_exit = 1; /* tests: quit once the match is settled */
+        else if (!strcmp(argv[i], "--wins") && i + 1 < argc) start_wins = atoi(argv[++i]);
     }
     const char *version = "V" DM_VERSION;
     dm_fault_install();
@@ -252,6 +285,8 @@ int main(int argc, char **argv)
     }
     if (getenv("SteamDeck")) fullscreen = 1;
     if (!headless) load_settings(&f, &fullscreen);
+    if (start_wins >= 1 && start_wins <= 3) f.wins = start_wins;
+    if (getenv("WARPZONE_JOIN") || getenv("WARPZONE_HOST")) launch_online = 1;
     if (SDL_Init(headless ? 0 : SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER | SDL_INIT_AUDIO) != 0) {
         dm_fault("SDL_Init", SDL_GetError());
         return 1;
@@ -269,6 +304,21 @@ int main(int argc, char **argv)
         if (arg_rom) snprintf(rom_path, sizeof rom_path, "%s", arg_rom);
         dm_sfx_init(rom_path[0] ? rom_path : NULL);
     }
+    /* Online play: a Warpzone client logs in in the background; local play never waits for it.
+     * Headless runs (CI smoke) only go online when asked to. */
+    static DmOnline on;
+    static DmNetUi ui;
+    if (!headless || launch_online) dm_online_open(&on, DM_VERSION, SDL_GetTicks());
+    else memset(&on, 0, sizeof on);
+    int intent = dm_online_launch(&on, argc, argv);
+    if (intent == 1 || intent == 2 || join_code || ranked) {
+        dm_netui_open(&ui);
+        ui.screen = DM_NU_WAIT;
+        if (intent == 2) dm_online_host(&on, &f);
+        else if (join_code) dm_online_join_code(&on, join_code);
+        else if (ranked) dm_online_queue(&on);
+    }
+    int online_failed = 0;
     DmDraw draw;
     memset(&draw, 0, sizeof draw);
     DmBot bots[2];
@@ -284,11 +334,23 @@ int main(int argc, char **argv)
     int running = 1, was_screen = f.screen;
     while (running && (frames < 0 || ticks < frames)) {
         SDL_Event e;
-        int escape = 0;
+        int escape = 0, open_online = 0;
+        DmNetKeys keys;
+        memset(&keys, 0, sizeof keys);
+        int in_ui = ui.screen != DM_NU_OFF && on.phase != DM_ON_PLAYING;
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) running = 0;
             else if (e.type == SDL_CONTROLLERDEVICEADDED) pad_added(e.cdevice.which);
             else if (e.type == SDL_CONTROLLERDEVICEREMOVED) pad_removed(e.cdevice.which);
+            else if (e.type == SDL_CONTROLLERBUTTONDOWN && e.cbutton.button == SDL_CONTROLLER_BUTTON_BACK && !in_ui &&
+                     on.phase != DM_ON_PLAYING && f.screen == DM_FRONT_SETUP)
+                open_online = 1;
+            else if (e.type == SDL_TEXTINPUT && in_ui) {
+                size_t n = strlen(keys.typed);
+                for (const char *c = e.text.text; *c && n + 1 < sizeof keys.typed; c++)
+                    if (*c > 32 && *c < 127) keys.typed[n++] = *c;
+                keys.typed[n] = 0;
+            }
             else if (e.type == SDL_DROPFILE) { /* the ROM for the sound effects */
                 if (dm_sfx_use_rom(e.drop.file) == 0) {
                     snprintf(rom_path, sizeof rom_path, "%s", e.drop.file);
@@ -302,9 +364,20 @@ int main(int argc, char **argv)
                     fullscreen = !fullscreen;
                     SDL_SetWindowFullscreen(win, fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
                     SDL_ShowCursor(fullscreen ? SDL_DISABLE : SDL_ENABLE);
+                } else if (in_ui) {
+                    if (k == SDLK_ESCAPE) keys.escape = 1;
+                    else if (k == SDLK_BACKSPACE) keys.backspace = 1;
+                    else if (k == SDLK_RETURN || k == SDLK_KP_ENTER) keys.enter = 1;
+                } else if (on.phase == DM_ON_PLAYING && on.front && on.front->screen == DM_FRONT_SETUP) {
+                    if (k == SDLK_ESCAPE) { /* leave the room; the menu shows where we are */
+                        dm_online_leave(&on);
+                        ui.screen = DM_NU_MENU;
+                    }
                 } else if (k == SDLK_ESCAPE) {
                     if (f.screen == DM_FRONT_SETUP) running = 0;
                     else escape = 1;
+                } else if (k == SDLK_F2 && f.screen == DM_FRONT_SETUP && on.phase != DM_ON_PLAYING) {
+                    open_online = 1;
                 }
             }
         }
@@ -317,6 +390,55 @@ int main(int argc, char **argv)
             while (acc >= freq) { acc -= freq; due++; }
             if (due > 4) due = 4; /* after a stall, catch up a little and drop the rest */
             if (!due) SDL_Delay(1); /* without vsync the loop would spin */
+        }
+        if (open_online) dm_netui_open(&ui);
+        int was_ui = ui.screen != DM_NU_OFF;
+        dm_online_update(&on, SDL_GetTicks());
+        if (ui.screen != DM_NU_OFF && on.phase != DM_ON_PLAYING) {
+            /* the online screens: this machine's pads and keys together */
+            const Uint8 *k = SDL_GetKeyboardState(NULL);
+            uint16_t pad = headless ? 0 : keys_for(k, 0) | keys_for(k, 1) | pad_bits(pads[0]) | pad_bits(pads[1]);
+            dm_netui_frame(&ui, &on, &f, pad, &keys);
+            for (int t = 1; t < due; t++) {
+                DmNetKeys none;
+                memset(&none, 0, sizeof none);
+                dm_netui_frame(&ui, &on, &f, pad, &none);
+            }
+            if (!headless) {
+                if (ui.screen == DM_NU_NAME || ui.screen == DM_NU_CODE) { if (!SDL_IsTextInputActive()) SDL_StartTextInput(); }
+                else if (SDL_IsTextInputActive()) SDL_StopTextInput();
+            }
+            if (headless) SDL_Delay(2); /* nothing to compute while waiting */
+            due = 0;
+        } else if (on.phase == DM_ON_PLAYING) {
+            /* the shared game: one pad from this machine, the opponent's from the network */
+            const Uint8 *k = SDL_GetKeyboardState(NULL);
+            int side = on.ls.side, advanced = 0;
+            for (int t = 0; t < due; t++) {
+                uint16_t pad = 0;
+                if (bot) pad = demo_pad(&bots[side], on.front, side);
+                else if (!headless)
+                    pad = keys_for(k, 0) | keys_for(k, 1) | pad_bits(pads[0]) | pad_bits(pads[1]) | (escape ? DM_BTN_START : 0);
+                escape = 0;
+                if (!dm_online_step(&on, pad)) break;
+                advanced++;
+                if (!headless) {
+                    dm_sfx_begin_tick();
+                    for (int i = 0; i < on.front->se_n; i++) dm_sfx_play(on.front->se[i], on.front->se_player[i]);
+                }
+            }
+            if (headless && !advanced) SDL_Delay(1);
+            if (online_exit && on.decided_winner) {
+                /* settled once the opponent has provably run past the deciding tick (its hash
+                 * for a later tick matched ours), and for ranked once the server rated it */
+                if (on.ranked ? on.match_state[0] != 0 : on.ls.checked >= on.decided_tick) running = 0;
+            }
+            due = 0;
+        }
+        if (was_ui && ui.screen == DM_NU_OFF && on.phase != DM_ON_PLAYING) due = 0; /* closed this frame */
+        if (online_exit && on.phase != DM_ON_PLAYING) {
+            if (on.decided_winner && (!on.ranked || on.match_state[0])) running = 0; /* the opponent left after the match */
+            else if (ui.screen != DM_NU_OFF && on.phase == DM_ON_IDLE && on.error[0]) { online_failed = 4; running = 0; }
         }
         for (int t = 0; t < due; t++) {
             uint16_t in[2] = { 0, 0 };
@@ -342,11 +464,28 @@ int main(int argc, char **argv)
             int dw, dh;
             SDL_GetRendererOutputSize(ren, &dw, &dh);
             draw.ren = ren;
-            dm_render(&draw, &f, dw, dh, version, CONTROLS_HINT, dm_sfx_status());
+            if (on.phase == DM_ON_PLAYING && on.front) {
+                char banner[96], names[2][24];
+                const char *name_ptr[2] = { names[0], names[1] };
+                dm_online_line(&on, banner, sizeof banner);
+                snprintf(names[on.ls.side], sizeof names[0], "%s", on.username);
+                snprintf(names[!on.ls.side], sizeof names[0], "%s", on.peer_name);
+                dm_render(&draw, on.front, dw, dh, version, "ESC LEAVES THE ROOM", on.error[0] ? on.error : dm_sfx_status(), banner,
+                          name_ptr);
+            } else if (ui.screen != DM_NU_OFF)
+                dm_render_netui(&draw, &ui, &on, dw, dh, version);
+            else
+                dm_render(&draw, &f, dw, dh, version, on.available ? CONTROLS_HINT_ONLINE : CONTROLS_HINT, dm_sfx_status(), NULL,
+                          NULL);
             SDL_RenderPresent(ren);
         }
     }
     if (!headless) save_settings(&f, fullscreen);
+    if (online_exit && on.decided_winner && !online_failed)
+        printf("online result tick=%u winner=%d hash=%08x checked=%u ranked=%d state=%s\n", on.decided_tick, on.decided_winner,
+               on.decided_hash, on.ls.checked, on.ranked, on.match_state);
+    if (online_exit && !on.decided_winner && !online_failed) online_failed = 5;
+    dm_online_close(&on);
     dm_sfx_quit();
     dm_draw_free(&draw);
     dm_front_free(&f);
@@ -355,5 +494,5 @@ int main(int argc, char **argv)
     if (ren) SDL_DestroyRenderer(ren);
     if (win) SDL_DestroyWindow(win);
     SDL_Quit();
-    return 0;
+    return online_failed;
 }
