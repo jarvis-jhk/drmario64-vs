@@ -41,6 +41,7 @@ F11 or Alt+Enter toggles fullscreen (the Steam Deck starts fullscreen). Esc paus
 quits from the start screen.
 
 **Sound effects** come from your own copy of the game: drop your Dr. Mario 64 (USA) ROM
-(`.z64`) onto the window once, or start with `--rom <file>`. The effects are rendered
+(`.z64`) onto the window once, or start with `--rom <file>` (the Warpzone launcher
+hands over a ROM it found as `WARPZONE_DATA_ROM`; that is used too). The effects are rendered
 from it and cached in your user data directory; nothing from the ROM is part of this
 project. Without a ROM the game plays silently. There is no music, by design.

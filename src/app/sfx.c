@@ -101,9 +101,11 @@ int dm_sfx_use_rom(const char *path)
     return 0;
 }
 
+/* The cache comes first: it is rendered from the one supported ROM, so re-reading a ROM
+ * would give the same bank. That keeps a start cheap when the Warpzone launcher passes
+ * --rom on every start. A dropped ROM (dm_sfx_use_rom) still re-imports. */
 void dm_sfx_init(const char *rom_path)
 {
-    if (rom_path && dm_sfx_use_rom(rom_path) == 0) return;
     char *cache = pref("sfx-cache.bin");
     if (cache && dm_romsfx_load_cache(cache, &bank) == 0) {
         free(cache);
@@ -111,8 +113,10 @@ void dm_sfx_init(const char *rom_path)
         return;
     }
     free(cache);
-    const char *env = getenv("DM_ROM");
-    if (env && *env) dm_sfx_use_rom(env);
+    /* the launcher's find (WARPZONE_DATA_ROM, docs/integration.md of jarvis-jhk/warpzone) */
+    const char *src[3] = { rom_path, getenv("WARPZONE_DATA_ROM"), getenv("DM_ROM") };
+    for (int i = 0; i < 3; i++)
+        if (src[i] && *src[i] && dm_sfx_use_rom(src[i]) == 0) return;
 }
 
 const char *dm_sfx_status(void) { return status; }

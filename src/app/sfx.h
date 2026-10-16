@@ -3,7 +3,7 @@
  * data directory. Without a ROM the game is silent. */
 #pragma once
 
-/* rom_path may be NULL: then the cache, DM_ROM and the remembered path are tried. */
+/* The cache wins; else rom_path (may be NULL), WARPZONE_DATA_ROM and DM_ROM are tried. */
 void dm_sfx_init(const char *rom_path);
 /* Render the effects from this ROM, cache them and switch sound on. 0 on success. */
 int dm_sfx_use_rom(const char *path);
