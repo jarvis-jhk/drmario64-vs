@@ -135,6 +135,7 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   add-to-steam tested locally against a fake userdata dir.
 - Repo PUBLIC since 2026-10-16 (adhoc visibility gate t_mvawc20m2i8uf5: no ROM bytes, no private data; init commit c278833 e-mail kept). v0.1.0 announced to Jan. Warpzone descriptor PR jarvis-jhk/warpzone#5 (games/drmario64-vs.toml, tier 0, `--rom {path}`, art from steam_hero).
 - v0.1.0 published by Release run 38894279910 (all jobs green); downloaded assets match SHA256SUMS, the Linux tree runs here, Windows zip carries only SDL2.dll (the restricted-PATH smoke passed). Next version > v0.1.0.
+- Warpzone launcher hand-over (2026-10-16, report-API request from the warpzone lane): the game reads `WARPZONE_DATA_ROM` at start (after `--rom`, before `DM_ROM`), and the cached sound bank now wins over any ROM path, so the launcher's `--rom` on every start is free (1c20e1b). Descriptor follow-up jarvis-jhk/warpzone#9 (on #8's branch): known .z64 fingerprint, .v64/.n64 patterns, no `present`. Roadmap item: Warpzone online versus.
 - Open, Jan.s test: install on the Deck, two real pads, keyboard layout feel.
 
 ## Decisions
