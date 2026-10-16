@@ -52,6 +52,7 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   attacks, attacks onto pending garbage and TIME ATTACK clears. One process per movie.
   Needs `-no-pie`: the decomp's own `uintptr_t` is 32-bit. `dm_draw_capsel_by_cpu_tentative`
   (framebuffer drawing) is cut by sed at build time.
+- CI run 38886027184 green on 1f0a436 (Linux ASan/UBSan vs_traces 38 s, native Windows 25 s; logs checked).
 - **Engine** `src/core/vs.c` (`DmVs`, `dm_vs_start/tick/next_round/round_state/dump`):
   2P state machine, pause, retry menus (result supplied by the frontend), results,
   TIME ATTACK tally, joy.c auto-repeat. `tests/test_vs.c` (ctest `vs_traces`, ~45 s
