@@ -102,6 +102,20 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   CONTINUE, REPLAY identical, END) → RETRY from pause → FLASH and TIME ATTACK rounds.
 - Settings (each side's last choices, fullscreen, ROM path) in SDL's pref dir
   `settings.ini`.
+- **Sound** `romsfx.c` (ours, clean-room from reading libmus's formats, no code copied):
+  validates the ROM by the WaveTables/PtrTablesV2 magic, decodes VADPCM (checked: the
+  decoded frame at every loop start equals the encoder's stored loop state;
+  `dm_romsfx_selfcheck`), interprets each effect's Music-Tools stream (stop, wave,
+  envelope, detune, wobble, pan, reverb dry level, volume, startfx, notes/rests — all
+  that occur in the 104 effects) at 32 kHz (`syn_output_rate`, 533 samples per tick),
+  applies gSndsEntries pitch/volume/max length. `sfx.c`: 4 voices, steal by priority as
+  dm_snd_play, no double start in one tick. ROM via drop-on-window, `--rom`, settings or
+  `DM_ROM`; rendered bank cached as `sfx-cache.bin` in the pref dir (versioned). ctest
+  `romsfx` runs with `DM_ROM` set, else skips. `sfxdump <rom> <dir>` writes WAVs locally.
+  UNVERIFIED: pitch formula (2^((note+base−48+fine/100)/12)·32 kHz, from the library,
+  not measured), first-note fade-in, reverb wet signal omitted, linear resampling instead
+  of the RSP's 4-tap filter, max-length cut ±1 frame (only SE 74), 0–1 frame start
+  latency of the original not modelled. SE 69 is silent by data (volume 0).
 - **Open, Jan's test**: real pads, the Deck, and the feel of keyboard/pads; the default
   key layout is a guess.
 
@@ -116,9 +130,9 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Win/draw jingles are music sequences in the original. Jan wants no music: skip them
   for v0.1; revisit if the round end feels empty.
 
-## Next (M2)
+## Next (M3)
 
-1. SDL frontend on `DmVs`: VS setup screen (mode, level/speed per player, wins), the
-   retry/pause menus (`retry_result`), keyboard + two pads.
-2. Vector renderer in the original layout; SFX from the user's ROM (decided above).
-3. Emulator route for countdown length / latency (heavy: re lane).
+1. Release packaging (Linux tarball/AppImage, Windows zip, Deck installer, auto-update,
+   fault reporting in release builds), first prerelease for Jan to test.
+2. Emulator route for countdown length / latency (heavy: re lane).
+3. Polish: round-start slide-in, score popups, key rebinding.

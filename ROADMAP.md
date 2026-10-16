@@ -12,6 +12,8 @@
   movies (~440k ticks, NORMAL/FLASH/TIME ATTACK) with every tick's full state identical.
 - **M2 Playable 1v1** — SDL2 frontend, two controllers + keyboard, VS menu
   (level/speed per player), vector renderer in the original layout, 4K-crisp; SFX.
+  **Done 2026-10-16**: setup screen, pause/retry/REPLAY menus, AA vector renderer,
+  pads + keyboard, SFX rendered from the player's ROM; headless session test + bot round.
 - **M3 Release & Deck** — Linux/Windows/Deck builds, installer with desktop file,
   artwork and auto-update, fault reporting; first release v0.1.0.
 - **M4 Polish** — input-latency measurement, options (window/fullscreen, rebinding).

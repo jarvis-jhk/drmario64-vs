@@ -284,9 +284,10 @@ int main(int argc, char **argv)
         }
         for (int t = 0; t < due; t++) {
             uint16_t in[2] = { 0, 0 };
-            if (headless) {
-                if (demo) { in[0] = demo_pad(&bots[0], &f, 0); in[1] = demo_pad(&bots[1], &f, 1); }
-            } else {
+            if (demo) {
+                in[0] = demo_pad(&bots[0], &f, 0);
+                in[1] = demo_pad(&bots[1], &f, 1);
+            } else if (!headless) {
                 const Uint8 *k = SDL_GetKeyboardState(NULL);
                 for (int i = 0; i < 2; i++) in[i] = keys_for(k, i) | pad_bits(pads[i]);
                 if (escape) in[0] |= DM_BTN_START; /* Esc pauses, like START */
