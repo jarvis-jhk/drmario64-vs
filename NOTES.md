@@ -72,6 +72,39 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Next: M2 (SDL frontend: menus that set `retry_result`, renderer, input mapping). The
   emulator route for countdown length and input latency stays a 🔬 re-lane job.
 
+## 2026-10-16 — M2 playable 1v1
+
+- **Frontend logic** `src/app/front.c` (`DmFront`, no SDL): our own setup screen (mode,
+  wins 1/2/3 shared; level/speed per player, defaults as `dm_init_config_save`: level
+  10, MED, FLASH/TA level MED; A/START ready, B un-ready, left/right with joy.c's 12/6
+  repeat), the match, the menus the engine asks for and REPLAY. The engine's
+  `retry_result` is what the original's menu *display* writes (`pause_table` /
+  `cont_table` entries 3..5 in game_etc.c): type 1 {CONTINUE 0, RETRY 1, END 2},
+  type 3 {REPLAY 0, RETRY 2, END 3}, type 5 {REPLAY 0, NEXT 1, END 3}; the front sets
+  it from `retry_select` before each tick. REPLAY = the DmVs snapshot at the round start
+  + the recorded pads, back to live pads the tick the replayed round is decided again
+  (test: identical dump). The session match-win counter stands in for `vs_win_total`.
+- Input reaches the game one tick later than read (pads are read at the end of a tick,
+  as onDoneSawp does); a START pause applies two ticks after the press. That is the
+  engine's (= original's) order, not a frontend delay.
+- **Character voices**: the engine now records who a voice belongs to (`se_player`,
+  not in the dump: the 29 golden movies still match). P1 uses charNo 0's set (base 91),
+  P2 charNo 1's (base 81), the default VS characters.
+- **Renderer** `draw.c` (anti-aliased convex shapes, outlines, a stroke font, one
+  `SDL_RenderGeometry` batch per frame) + `render.c`: bottles, cells, falling capsule
+  (+1 px), next capsule in the neck, ghost, stars at `_posP2StarX/Y` (+22 px, our board),
+  counters, timer (TIME ATTACK counts down), logos, menus, pause hides the bottles.
+  Our own art; layout scaled from 320×240 with the aspect kept. Crisp at 3840×2160.
+- **Bot** `bot.c` (ours, greedy): for tests, `--demo` and screenshots only.
+- `--shot <bmp> [--demo] [--until round|pause] --frames N --size WxH` renders without a
+  display (software renderer); ctest `app_render` does a whole bot round with it.
+- `tests/test_front.c` (ctest `front_session`): setup → 2-win match (NEXT, pause +
+  CONTINUE, REPLAY identical, END) → RETRY from pause → FLASH and TIME ATTACK rounds.
+- Settings (each side's last choices, fullscreen, ROM path) in SDL's pref dir
+  `settings.ini`.
+- **Open, Jan's test**: real pads, the Deck, and the feel of keyboard/pads; the default
+  key layout is a guess.
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in

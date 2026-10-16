@@ -27,10 +27,14 @@ enum { /* DmMainCnt */
 enum { TA_TIME = 10800 }; /* three minutes */
 enum { JOY_REPEAT_MASK = 0xCF0F }; /* ANY_BUTTON without Z, START, L, R */
 
-static void se(DmVs *g, int id)
+static void se_by(DmVs *g, int id, int player)
 {
-    if (id >= 0 && g->se_n < (int)(sizeof g->se / sizeof g->se[0])) g->se[g->se_n++] = id;
+    if (id < 0 || g->se_n >= (int)(sizeof g->se / sizeof g->se[0])) return;
+    g->se_player[g->se_n] = (int8_t)player;
+    g->se[g->se_n++] = id;
 }
+
+static void se(DmVs *g, int id) { se_by(g, id, -1); }
 
 static int wrap(int start, int end, int v) /* WrapI */
 {
@@ -895,7 +899,7 @@ static int set_win(DmVs *g, int p, int finish, int menu) /* dm_set_win_2p */
     DmPlayer *s = &g->pl[p];
     s->cnd_static = DM_C_WIN;
     g->effect_timer[p] = 180;
-    se(g, DM_SE_VOICE + 4);
+    se_by(g, DM_SE_VOICE + 4, p);
     if (!menu) {
         menu = 1;
         s->cnd = DM_C_WIN_RETRY;
@@ -1059,7 +1063,7 @@ static int player_step(DmVs *g, int pi)
                 }
             } else {
                 int k = p->chain_line - 2;
-                se(g, DM_SE_VOICE + (k <= 2 ? k : 2));
+                se_by(g, DM_SE_VOICE + (k <= 2 ? k : 2), pi);
                 p->chain_color[3] &= (uint8_t)~8;
             }
         }
@@ -1082,7 +1086,7 @@ static int player_step(DmVs *g, int pi)
             send_attack(g, p);
             if (drop_garbage(p)) {
                 next = 0;
-                se(g, DM_SE_VOICE + 3);
+                se_by(g, DM_SE_VOICE + 3, pi);
                 p->mode = DM_M_BALL_DOWN;
             }
         }

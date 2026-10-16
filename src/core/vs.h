@@ -132,6 +132,7 @@ typedef struct DmVs {
     uint16_t rep_first, rep_next; /* joycur1, joycur2: 12 and 6 frames */
     /* sound effects of the current tick */
     int se[64], se_n;
+    int8_t se_player[64]; /* who a character voice belongs to (-1 for the rest); not in the dump */
 } DmVs;
 
 /* What a tick's menus decided (DmMainCnt from dm_game_main_2p). The next round and a
