@@ -174,7 +174,14 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
 - Open, Jan's test: two real machines/home networks, the public server and relay (this
   container cannot reach the public UDP relay, same as furries), pad name/code entry on
   the Deck, how the input delay feels. The descriptor needs tier 3 + [rooms] + [[ladder]]
-  1v1 (asked the warpzone lane).
+  1v1 (asked the warpzone lane, t_mvb1n7hu4dd364).
+- CI 38913446210 green on a7275a6 (Linux ASan/UBSan incl. test_warpzone 4/4 with a rated
+  ranked match, Windows incl. offline libwarpzone smoke exit 4; checkout sha checked in log).
+- **v0.2.0 published** (Release run 38915224305 on 2af718f; the first v0.2.0 run failed
+  only because the Windows libwarpzone zip has no LICENSE-MIT — now fetched from the
+  warpzone tag; the failed tag was never published and was moved). Assets re-downloaded,
+  SHA256SUMS OK, the packaged Linux launcher passed test_warpzone 4/4 here, only
+  warpzone.virtualtabletop.io and the ntfy fault topic embedded. Next version > v0.2.0.
 
 ## Decisions
 
