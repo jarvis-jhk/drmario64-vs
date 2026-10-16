@@ -116,6 +116,7 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   not measured), first-note fade-in, reverb wet signal omitted, linear resampling instead
   of the RSP's 4-tap filter, max-length cut ±1 frame (only SE 74), 0–1 frame start
   latency of the original not modelled. SE 69 is silent by data (volume 0).
+- CI run 38891415079 green on 34e9652 (Linux ASan/UBSan + native Windows; 38890278504 on cfa9f69).
 - **Open, Jan's test**: real pads, the Deck, and the feel of keyboard/pads; the default
   key layout is a guess.
 
