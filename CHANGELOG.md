@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.0 — online versus
+
+- Play against someone on another machine through Warpzone: on the start screen press F2
+  or the pad's Back button, then HOST A ROOM (shows a six-letter code) or JOIN WITH A CODE.
+  The Warpzone launcher can also start the game straight into a room.
+- RANKED 1 VS 1 finds an opponent and rates the match (both play NORMAL, level 10, MED,
+  first to 3 wins).
+- Both machines run the same game in lockstep, checked every half second, so a bad line
+  shows as a short wait, never as a different game. Works through the Warpzone relay when
+  a direct connection is not possible.
+- The first time you go online you choose a name, shared with all Warpzone games.
+- Sound: a ROM the Warpzone launcher found is used, and the cached sound effects need no
+  ROM afterwards.
+
+Not tested yet between two real home networks or on the public server's relay; please
+report how the input delay feels online.
+
 ## v0.1.0 — first preview
 
 - Two-player local VS of Dr. Mario 64: NORMAL, FLASH and TIME ATTACK, 1–3 wins, virus
