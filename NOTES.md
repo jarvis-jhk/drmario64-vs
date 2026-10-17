@@ -183,6 +183,11 @@ Decomp: AngheloAlf/drmario64 (MIT, matching).
   SHA256SUMS OK, the packaged Linux launcher passed test_warpzone 4/4 here, only
   warpzone.virtualtabletop.io and the ntfy fault topic embedded. Next version > v0.2.0.
 
+- Warpzone fault reporting (t_mvc434b267lr9, 2026-10-17): Jan wants crashes/faults reported
+  through Warpzone (wz_report / wz_report_problem, game id drmario64-vs). Needs libwarpzone
+  0.1.3, not released yet (latest v0.1.2; we pin v0.1.1). Daily check schedule 399bcae5 does
+  the switch once it is out and then removes itself. Until then fault.c keeps the ntfy relay.
+
 ## Decisions
 
 - Modes: VS offers NORMAL / FLASH / TIME ATTACK for two humans; all three are in
