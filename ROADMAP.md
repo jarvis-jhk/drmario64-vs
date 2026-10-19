@@ -26,3 +26,17 @@
   through libwarpzone 0.1.1 — code rooms, launcher join/host, relay fallback, ranked 1v1
   queue with reports and state hash; CI plays real processes against warpzone-server.
 - **M4 Polish** — input-latency measurement, options (window/fullscreen, rebinding).
+- **macOS support** (Jan, 2026-10-19; combined item `drmario-macos-support`) — a macOS build
+  (universal arm64+x86_64, or one per arch) built and smoke-tested on a GitHub `macos-*`
+  runner in CI (unit + golden-trace tests, headless session test, packaged-tree smoke),
+  attached to every release as a zip/dmg with an `.app` bundle; macOS install/start notes in
+  README (unsigned is fine: document right-click → Open / `xattr -dr com.apple.quarantine`).
+  Known risks: SDL2 renderer — we draw through `SDL_RenderGeometry`, so Metal backend and
+  Retina/high-DPI scaling (`SDL_WINDOW_ALLOW_HIGHDPI`, drawable vs window size) need checking;
+  controllers — macOS GameController/IOKit mapping, Xbox/PS pads, hotplug; paths — save/SFX
+  cache via `SDL_GetPrefPath` is fine, but the ROM picker/launcher (Python + Tk, `launcher.py`)
+  and the Linux installer/updater do not carry over (no zenity, no Steam helper; macOS
+  Python/Tk is not guaranteed); auto-update must replace a whole `.app` atomically and keep
+  quarantine in mind; Warpzone — CMake only fetches linux/windows libwarpzone packages, so a
+  macOS (ideally universal) libwarpzone build is needed from the warpzone lane, or the mac
+  build ships with online play switched off until then.
